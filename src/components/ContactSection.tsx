@@ -14,20 +14,20 @@ const ContactSection = () => {
     {
       icon: '📍',
       title: 'Visit Us',
-      details: '1234 Fitness Boulevard\nIronCore District, Gym City 90210',
-      link: '#'
+      details: '7-61 sree venkata sai colony beside st’anthonys high school, KOMPALLY',
+      link: 'https://www.google.com/maps/place/BARBELL+FITNESS+CLUB+(KOMPALLY)/@17.5467234,78.4873498,17z/data=!3m1!4b1!4m6!3m5!1s0x3bcb8500108407cf:0x7fa695ff9608'
     },
     {
       icon: '📞',
       title: 'Call Us',
-      details: '+1 (555) 123-4567\nText us anytime',
-      link: 'tel:+15551234567'
+      details: '+91 9989678960\n+91 9063678960\n+91 9000927424',
+      link: 'tel:919989678960'
     },
     {
       icon: '✉️',
       title: 'Email Us',
-      details: 'info@ironcorefitness.com\nSupport available 24/7',
-      link: 'mailto:info@ironcorefitness.com'
+      details: 'torquetonefitness@gmail.com\nSupport available 24/7',
+      link: 'torquetonefitness@gmail.com'
     },
     {
       icon: '🕒',
@@ -142,7 +142,7 @@ const ContactSection = () => {
                           name="phone"
                           value={formData.phone}
                           onChange={handleInputChange}
-                          placeholder="(555) 123-4567"
+                          placeholder="+91 9989678960"
                           className="w-full px-4 py-3 bg-gray-800/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-all duration-200"
                         />
                       </div>
@@ -194,12 +194,23 @@ const ContactSection = () => {
             <div className="space-y-8">
               
               {/* Contact Info Cards */}
-              <div className="grid sm:grid-cols-2 gap-6">
+              <div className="grid sm:grid-cols-2 gap-6 hover:cursor-pointer">
                 {contactInfo.map((info, index) => (
                   <div 
                     key={info.title} 
                     className={`transition-all duration-1000 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
                     style={{ transitionDelay: `${index * 150}ms` }}
+                    onClick={() => {
+                       if(info.title === 'Email Us'){
+                           window.open(`mailto:${info.link}`);
+                       }  else if(info.title === 'Call Us'){
+                           window.open(`tel:${info.link}`);
+                       } else if(info.title === 'Visit Us'){
+                           window.open(info.link);
+                       }  else if(info.title === 'Hours'){
+                           // Do nothing
+                       }
+                      }}
                   >
                     <div className="bg-gray-900/80 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-6 text-center space-y-4 h-full shadow-lg hover:shadow-xl transition-all duration-300">
                       <div className="w-12 h-12 bg-red-500/20 rounded-lg flex items-center justify-center mx-auto text-2xl">

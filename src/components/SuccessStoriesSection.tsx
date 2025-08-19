@@ -1,11 +1,11 @@
-// src/components/sections/SuccessStoriesSection.tsx (or your file path)
+// src/components/sections/SuccessStoriesSection.tsx (Updated)
 
 import { useState, useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { useInView } from 'react-intersection-observer';
 import { AnimatePresence, motion } from 'framer-motion';
-import { SkiperCard } from '././ui/skiper-card'; // Adjust import path
-import MaskedDiv from '././ui/masked-div';      // Adjust import path
+import ThemedGlowCard from './ui/ThemedGlowCard'
+import MaskedDiv from './ui/masked-div';      // Adjust import path
 
 // --- Data for our carousel ---
 const stories = [
@@ -88,7 +88,8 @@ const SuccessStoriesSection = () => {
 
         {/* The main interactive card showcase */}
         <div ref={sectionRef} className="max-w-6xl mx-auto" style={{ perspective: '2000px' }}>
-          <SkiperCard>
+          {/* REPLACE SkiperCard WITH FuturisticCard */}
+          <ThemedGlowCard>
             <div 
               className="space-y-6"
               onMouseEnter={stopAutoPlay}
@@ -155,7 +156,7 @@ const SuccessStoriesSection = () => {
                 </motion.div>
               </AnimatePresence>
             </div>
-          </SkiperCard>
+          </ThemedGlowCard>
         </div>
 
       </div>

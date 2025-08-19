@@ -102,7 +102,7 @@ const VideoSection = () => {
       <div className="absolute inset-0 z-0 parallax-bg" style={{ willChange: 'transform' }}>
         <img 
           src={gymInteriorImage}
-          alt="IronCore Fitness gym interior"
+          alt="TORQUE & TONE FITNESS gym interior"
           className="w-full h-[120%] object-cover" // Height is > 100% to have room for parallax
         />
         <div className="absolute inset-0 bg-gradient-to-br from-background/80 via-background/60 to-background/80" />
@@ -132,7 +132,7 @@ const VideoSection = () => {
           </h2>
 
           <p className="text-xl md:text-2xl text-white/90 leading-relaxed font-light max-w-3xl mx-auto video-animate">
-            Experience the intensity, passion, and dedication that makes IronCore Fitness 
+            Experience the intensity, passion, and dedication that makes TORQUE & TONE FITNESS 
             the premier destination for serious athletes and fitness enthusiasts.
           </p>
 

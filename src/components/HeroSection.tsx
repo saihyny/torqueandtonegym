@@ -206,7 +206,7 @@ const HeroSection = () => {
       >
         <img
           src={heroImage}
-          alt="Professional bodybuilder training at IronCore Fitness"
+          alt="Professional bodybuilder training at TORQUE & TONE FITNESS"
           className="w-full h-full object-cover"
           style={{
             opacity: 1,

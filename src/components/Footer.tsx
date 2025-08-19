@@ -35,7 +35,7 @@ const Footer = () => {
           <div className="lg:col-span-1 space-y-6">
             <div className="space-y-4">
               <h3 className="text-2xl font-oswald font-bold text-gradient">
-                IRONCORE FITNESS
+                TORQUE & TONE FITNESS
               </h3>
               <p className="text-muted-foreground leading-relaxed">
                 Transform your body and mind with our premium fitness programs. 
@@ -163,12 +163,10 @@ const Footer = () => {
         </div>
 
         {/* Bottom Section */}
-        <div className="border-t border-border/30 mt-12 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            
+        <div className="border-t border-border/30 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">          
             {/* Copyright */}
             <div className="text-sm text-muted-foreground">
-              © 2024 IronCore Fitness. All rights reserved.
+              © 2025 TORQUE & TONE FITNESS. All rights reserved.
             </div>
 
             {/* Legal Links */}
@@ -207,11 +205,12 @@ const Footer = () => {
                 </span>
               </div>
             </div>
-
+            {/* Developed by */}            
+          
           </div>
+          <div className="text-sm text-muted-foreground text-center m-6 hover:underline cursor-pointer " onClick={() => window.open('https://bytefractal.netlify.app/', '_blank')}>devloped by Byte Fractal</div>
         </div>
-
-      </div>
+           
     </footer>
   );
 };

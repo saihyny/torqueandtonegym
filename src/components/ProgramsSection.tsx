@@ -1,11 +1,11 @@
-// src/components/ProgramsSection.jsx
-
 import React, { useState, useEffect } from 'react';
 import { Dumbbell, Users, Apple, Zap, Target, Heart, ChevronRight } from 'lucide-react';
 import { SkiperCard } from "@/components/ui/skiper-card"; // Adjust this import path if needed
+import ProgramModal from './ProgramModal'; // Import the new modal component
 
 const ProgramsSection = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [selectedProgram, setSelectedProgram] = useState(null);
 
   useEffect(() => {
     setIsVisible(true);
@@ -56,6 +56,14 @@ const ProgramsSection = () => {
     }
   ];
 
+  const handleCardClick = (program) => {
+    setSelectedProgram(program);
+  };
+
+  const handleCloseModal = () => {
+    setSelectedProgram(null);
+  };
+
   return (
     <div className="relative min-h-screen bg-black text-white p-4 lg:p-4">
       <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-black to-gray-900 z-0" />
@@ -77,12 +85,13 @@ const ProgramsSection = () => {
           {programs.map((program, index) => (
             <div
               key={program.title}
-              className={`transition-all duration-700 h-full ${
+              className={`transition-all duration-700 h-full cursor-pointer ${
                 isVisible 
                   ? 'opacity-100 translate-y-0' 
                   : 'opacity-0 translate-y-12'
               }`}
               style={{ transitionDelay: `${index * 150}ms`, perspective: '1000px' }}
+              onClick={() => handleCardClick(program)}
             >
               <SkiperCard
                 title={program.title}
@@ -106,6 +115,7 @@ const ProgramsSection = () => {
           
         </div>
       </div>
+      <ProgramModal program={selectedProgram} onClose={handleCloseModal} />
     </div>
   );
 };
