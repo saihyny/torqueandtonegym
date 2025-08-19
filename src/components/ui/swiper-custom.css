@@ -1,0 +1,18 @@
+.swiper-pagination {
+  position: absolute;
+  bottom: -10px !important;
+  width: 100%;
+  text-align: center;
+}
+
+.swiper-pagination-bullet {
+  width: 8px;
+  height: 8px;
+  background-color: #4a4a4a; /* Inactive dot color */
+  opacity: 1;
+  transition: background-color 0.3s ease;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #ffffff; /* Active dot color */
+}
