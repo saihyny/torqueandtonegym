@@ -4,8 +4,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 import { useInView } from 'react-intersection-observer';
 import { Button } from '@/components/ui/button';
-import { Play, Volume2 } from '@/lib/icons';
-import { LazyImage } from '@/components/OptimizedImage';
+import { Play, Volume2 } from 'lucide-react';
 import gymInteriorImage from '@/assets/gym-interior.jpg';
 
 // Register GSAP plugins. This should be done once in your application's entry file,
@@ -97,15 +96,13 @@ const VideoSection = () => {
       inViewRef(el);
     }} className="relative min-h-screen flex items-center justify-center overflow-hidden">
       
-      {/* Background with Parallax - Optimized with lazy loading */}
+      {/* Background with Parallax */}
       {/* We apply the `will-change` property via CSS (or inline style) to hint to the browser
           that this element's transform will be animated, allowing for optimization. */}
       <div className="absolute inset-0 z-0 parallax-bg" style={{ willChange: 'transform' }}>
-        <LazyImage
+        <img 
           src={gymInteriorImage}
           alt="TORQUE & TONE FITNESS gym interior"
-          width={1920}
-          height={1080}
           className="w-full h-[120%] object-cover" // Height is > 100% to have room for parallax
         />
         <div className="absolute inset-0 bg-gradient-to-br from-background/80 via-background/60 to-background/80" />

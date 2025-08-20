@@ -1,5 +1,5 @@
 import React from 'react';
-import { X } from '@/lib/icons';
+import { X } from 'lucide-react';
 import { motion, useMotionValue, useMotionTemplate } from 'framer-motion';
 
 const ProgramModal = ({ program, onClose }) => {

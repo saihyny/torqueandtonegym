@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import BookingForm from './BookingForm';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Check, Star } from '@/lib/icons';
+import { Check, Star } from 'lucide-react';
 
 const PricingSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);

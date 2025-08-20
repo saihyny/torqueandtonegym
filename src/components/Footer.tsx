@@ -1,4 +1,4 @@
-import { MapPin, Phone, Mail, Instagram, Facebook, Twitter, Youtube } from '@/lib/icons';
+import { MapPin, Phone, Mail, Instagram, Facebook, Twitter, Youtube } from 'lucide-react';
 
 const Footer = () => {
   const quickLinks = [

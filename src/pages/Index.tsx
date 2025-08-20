@@ -1,21 +1,17 @@
-import { useEffect, useRef, lazy } from "react";
+import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from "lenis";
 import HeroSection from "@/components/HeroSection";
-import Navbar from "@/components/Navbar";
-import LazyWrapper from "@/components/LazyWrapper";
+import ProgramsSection from "@/components/ProgramsSection";
+import TrainersSection from "@/components/TrainersSection";
+import SuccessStoriesSection from "@/components/SuccessStoriesSection";
+import VideoSection from "@/components/VideoSection";
+import PricingSection from "@/components/PricingSection";
+import ContactSection from "@/components/ContactSection";
+import Footer from "@/components/Footer";
+import Navbar from "@/components/Navbar"; // Import the separate Navbar component
 import SchemaProvider from "@/components/schema/SchemaProvider";
-import { PerformanceMonitor, measureBundleSize } from "@/lib/performance";
-
-// Lazy load heavy components to improve initial load time
-const ProgramsSection = lazy(() => import("@/components/ProgramsSection"));
-const TrainersSection = lazy(() => import("@/components/TrainersSection"));
-const SuccessStoriesSection = lazy(() => import("@/components/SuccessStoriesSection"));
-const VideoSection = lazy(() => import("@/components/VideoSection"));
-const PricingSection = lazy(() => import("@/components/PricingSection"));
-const ContactSection = lazy(() => import("@/components/ContactSection"));
-const Footer = lazy(() => import("@/components/Footer"));
 
 // Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger);
@@ -24,10 +20,6 @@ const Index = () => {
   const lenisRef = useRef<Lenis | null>(null);
 
   useEffect(() => {
-    // Initialize performance monitoring
-    const monitor = PerformanceMonitor.getInstance();
-    monitor.init();
-    measureBundleSize();
     // Initialize Lenis smooth scroll
     const lenis = new Lenis({
       duration: 1.2,
@@ -118,49 +110,35 @@ const Index = () => {
 
           {/* Programs Section */}
           <section id="programs">
-            <LazyWrapper fallback={<div className="min-h-[400px] flex items-center justify-center"><div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div></div>}>
-              <ProgramsSection />
-            </LazyWrapper>
+            <ProgramsSection />
           </section>
 
           {/* Trainers Section */}
           <section id="trainers">
-            <LazyWrapper fallback={<div className="min-h-[400px] flex items-center justify-center"><div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div></div>}>
-              <TrainersSection />
-            </LazyWrapper>
+            <TrainersSection />
           </section>
 
           {/* Video Section */}
-          <LazyWrapper fallback={<div className="min-h-[300px] flex items-center justify-center"><div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div></div>}>
-            <VideoSection />
-          </LazyWrapper>
+          <VideoSection />
 
           {/* Success Stories Section */}
           <section id="success">
-            <LazyWrapper fallback={<div className="min-h-[400px] flex items-center justify-center"><div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div></div>}>
-              <SuccessStoriesSection />
-            </LazyWrapper>
+            <SuccessStoriesSection />
           </section>
 
           {/* Pricing Section */}
           <section id="pricing">
-            <LazyWrapper fallback={<div className="min-h-[400px] flex items-center justify-center"><div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div></div>}>
-              <PricingSection />
-            </LazyWrapper>
+            <PricingSection />
           </section>
 
           {/* Contact Section */}
           <section id="contact">
-            <LazyWrapper fallback={<div className="min-h-[500px] flex items-center justify-center"><div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div></div>}>
-              <ContactSection />
-            </LazyWrapper>
+            <ContactSection />
           </section>
         </main>
 
         {/* Footer */}
-        <LazyWrapper fallback={<div className="min-h-[200px] flex items-center justify-center"><div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div></div>}>
-          <Footer />
-        </LazyWrapper>
+        <Footer />
 
         {/* Floating Action Button */}
         <div className="fixed bottom-8 right-8 z-40">
