@@ -125,9 +125,17 @@ const ReviewSchema = ({ reviews, aggregateRating }: ReviewSchemaProps) => {
             "datePublished": review.datePublished,
             "reviewAspect": review.reviewAspect,
             "itemReviewed": {
-              "@type": "Gym",
+              "@type": "LocalBusiness",
+              "@id": "https://torqueandtonefitness.com#business",
               "name": review.itemReviewed || "TORQUE & TONE FITNESS",
-              "url": "https://torqueandtonefitness.com"
+              "url": "https://torqueandtonefitness.com",
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "7-61 sree venkata sai colony beside st'anthonys high school",
+                "addressLocality": "KOMPALLY",
+                "addressRegion": "Telangana",
+                "addressCountry": "IN"
+              }
             },
             "publisher": {
               "@type": "Organization",
@@ -143,9 +151,19 @@ const ReviewSchema = ({ reviews, aggregateRating }: ReviewSchemaProps) => {
             "@type": "AggregateRating",
             "@id": "https://torqueandtonefitness.com#aggregate-rating",
             "itemReviewed": {
-              "@type": "Gym",
+              "@type": "LocalBusiness",
+              "@id": "https://torqueandtonefitness.com#business",
               "name": "TORQUE & TONE FITNESS",
-              "url": "https://torqueandtonefitness.com"
+              "url": "https://torqueandtonefitness.com",
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "7-61 sree venkata sai colony beside st'anthonys high school",
+                "addressLocality": "KOMPALLY",
+                "addressRegion": "Telangana",
+                "addressCountry": "IN"
+              },
+              "telephone": "+919989678960",
+              "priceRange": "₹₹"
             },
             "ratingValue": aggregateToUse.ratingValue,
             "reviewCount": aggregateToUse.reviewCount,
@@ -157,13 +175,22 @@ const ReviewSchema = ({ reviews, aggregateRating }: ReviewSchemaProps) => {
       ]
     };
 
-    // Also create a separate Organization schema with reviews
+    // Also create a separate LocalBusiness schema with reviews
     const organizationWithReviews = {
       "@context": "https://schema.org",
-      "@type": "Gym",
-      "@id": "https://torqueandtonefitness.com#organization-reviews",
+      "@type": "LocalBusiness",
+      "@id": "https://torqueandtonefitness.com#business-reviews",
       "name": "TORQUE & TONE FITNESS",
       "url": "https://torqueandtonefitness.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "7-61 sree venkata sai colony beside st'anthonys high school",
+        "addressLocality": "KOMPALLY",
+        "addressRegion": "Telangana",
+        "addressCountry": "IN"
+      },
+      "telephone": "+919989678960",
+      "priceRange": "₹₹",
       "review": reviewsToUse.map(review => ({
         "@type": "Review",
         "author": {

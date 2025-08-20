@@ -172,9 +172,11 @@ const ServiceSchema = ({ services }: ServiceSchemaProps) => {
           "description": service.description,
           "serviceType": service.serviceType,
           "provider": {
-            "@type": "Gym",
+            "@type": "LocalBusiness",
+            "@id": "https://torqueandtonefitness.com#business",
             "name": service.provider,
-            "url": "https://torqueandtonefitness.com"
+            "url": "https://torqueandtonefitness.com",
+            "additionalType": "https://schema.org/SportsActivityLocation"
           },
           "areaServed": {
             "@type": "Place",

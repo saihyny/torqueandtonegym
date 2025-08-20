@@ -53,10 +53,11 @@ const LocalBusinessSchema = ({
   useEffect(() => {
     const schemaData = {
       "@context": "https://schema.org",
-      "@type": "Gym",
-      "@id": `${url}#gym`,
+      "@type": "LocalBusiness",
+      "@id": `${url}#business`,
       "name": name,
       "alternateName": "Torque & Tone Fitness",
+      "additionalType": "https://schema.org/SportsActivityLocation",
       "description": description,
       "url": url,
       "telephone": telephone,
