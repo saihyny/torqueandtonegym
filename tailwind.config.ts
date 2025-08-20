@@ -3,10 +3,35 @@ import type { Config } from "tailwindcss";
 export default {
 	darkMode: ["class"],
 	content: [
-		"./pages/**/*.{ts,tsx}",
-		"./components/**/*.{ts,tsx}",
-		"./app/**/*.{ts,tsx}",
-		"./src/**/*.{ts,tsx}",
+		// PERFORMANCE OPTIMIZED: More specific content paths for better purging
+		"./index.html",
+		"./src/**/*.{js,ts,jsx,tsx}",
+		"./src/components/**/*.{js,ts,jsx,tsx}",
+		"./src/pages/**/*.{js,ts,jsx,tsx}",
+		"./src/lib/**/*.{js,ts,jsx,tsx}",
+		// Include any dynamic class generation patterns
+		"./src/**/*.{html,js,ts,jsx,tsx}",
+	],
+	// Safelist critical classes that might be generated dynamically
+	safelist: [
+		// Animation classes
+		'animate-spin',
+		'animate-pulse',
+		'animate-bounce',
+		// Dynamic color classes
+		'text-primary',
+		'bg-primary',
+		'border-primary',
+		// Responsive classes that might be missed
+		'md:text-8xl',
+		'lg:text-9xl',
+		'xl:text-9xl',
+		// GSAP animation classes
+		'gsap-fade-up',
+		'gsap-fade-left',
+		'gsap-fade-right',
+		'gsap-scale-in',
+		'gsap-rotate-in',
 	],
 	prefix: "",
 	theme: {

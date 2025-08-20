@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger'; // You still need to import it
-import { motion } from 'framer-motion';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useInView } from 'react-intersection-observer';
+import { LightweightAnimations, useOptimizedAnimation } from '@/lib/animations';
+import { HeroImage } from '@/components/OptimizedImage';
 import BookingForm from '@/components/BookingForm';
 import heroImage from '@/assets/hero-bodybuilder.jpg';
 
@@ -20,6 +21,9 @@ const HeroSection = () => {
   const imageRef = useRef<HTMLDivElement>(null);
   const [currentWord, setCurrentWord] = useState(0);
   const { ref: inViewRef, inView } = useInView({ threshold: 0.3, triggerOnce: true });
+
+  // Use lightweight animation hooks
+  const { cssHover, tap } = useOptimizedAnimation();
 
   const words = ['GET STRONGER', 'GET FASTER', 'GET FITTER', 'GET BETTER'];
 
@@ -179,31 +183,13 @@ const HeroSection = () => {
           height: '100%',
         }}
       >
-        <img
+        <HeroImage
           src={heroImage}
           alt="Professional bodybuilder training at TORQUE & TONE FITNESS"
           className="w-full h-full object-cover"
-          style={{
-            opacity: 1,
-            visibility: 'visible',
-          
-          }}
-          onLoad={(e) => {
-            const img = e.target as HTMLImageElement;
-            console.log('✅ Hero image loaded successfully!');
-            console.log('🖼️ Image dimensions:', img.naturalWidth, 'x', img.naturalHeight);
-            console.log('🖼️ Image src:', img.src);
-            console.log('🖼️ Image complete:', img.complete);
-          }}
-          onError={(e) => {
-            const img = e.target as HTMLImageElement;
-            console.error('❌ Hero image failed to load!');
-            console.error('🖼️ Failed src:', img.src);
-            console.error('🖼️ Error event:', e);
-          }}
         />
-        {/* THIS IS THE LINE THAT WAS REMOVED. The overlay is gone, so the image is 100% visible. */}
-        {/* <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/60" /> */}
+        {/* Overlay for text readability */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/60" />
       </div>
 
       <div className="container mx-auto px-6 lg:px-8 relative z-10">
@@ -223,15 +209,20 @@ const HeroSection = () => {
               </p>
             </div>
 
-            {/* CTA */}
+            {/* CTA - Optimized with lightweight animations */}
             <div className="pt-10 animate-element">
-              <motion.div
-                whileHover={{ scale: 1.08, y: -3 }}
-                whileTap={{ scale: 0.95 }}
-                transition={{ type: 'spring', stiffness: 300 }}
+              <button
+                className='btn-hero'
+                onClick={() => window.open('https://wa.me/919963000000', '_blank')}
+                {...cssHover(1.08)}
+                {...tap(0.95)}
+                style={{
+                  ...cssHover(1.08).style,
+                  willChange: 'transform',
+                }}
               >
-             <button className='btn-hero ' onClick={() => window.open('https://wa.me/919963000000', '_blank')}>Get Started</button>
-              </motion.div>
+                Get Started
+              </button>
             </div>
           </div>
         </div>

@@ -22,57 +22,73 @@ export default defineConfig(({ mode }) => ({
     },
   },
   build: {
-    // Enable minification
-    minify: 'terser',
-    terserOptions: {
-      compress: {
-        drop_console: mode === 'production',
-        drop_debugger: mode === 'production',
-      },
-    },
-    // Enable gzip compression
     rollupOptions: {
       output: {
-        // Manual chunk splitting for better caching
         manualChunks: {
-          // Vendor chunks
-          'react-vendor': ['react', 'react-dom'],
-          'router-vendor': ['react-router-dom'],
-          'animation-vendor': ['framer-motion', 'gsap', 'lenis'],
-          'ui-vendor': ['lucide-react', '@radix-ui/react-dialog', '@radix-ui/react-toast', '@radix-ui/react-tooltip'],
-          'form-vendor': ['react-hook-form', '@hookform/resolvers', 'zod'],
-          'swiper-vendor': ['swiper'],
-          // Component chunks
-          'hero-chunk': ['./src/components/HeroSection.tsx'],
-          'contact-chunk': ['./src/components/ContactSection.tsx'],
-          'footer-chunk': ['./src/components/Footer.tsx'],
+          vendor: ['react', 'react-dom'],
+          router: ['react-router-dom'],
         },
-        // Optimize chunk file names
+        // Optimize chunk file names with better hashing
         chunkFileNames: (chunkInfo) => {
-          const facadeModuleId = chunkInfo.facadeModuleId ? chunkInfo.facadeModuleId.split('/').pop().replace('.tsx', '').replace('.ts', '') : 'chunk';
-          return `assets/js/[name]-[hash].js`;
+          const name = chunkInfo.name || 'chunk';
+          return `assets/js/${name}-[hash:8].js`;
         },
-        entryFileNames: 'assets/js/[name]-[hash].js',
-        assetFileNames: 'assets/[ext]/[name]-[hash].[ext]',
+        entryFileNames: 'assets/js/[name]-[hash:8].js',
+        assetFileNames: (assetInfo) => {
+          const info = assetInfo.name.split('.');
+          const ext = info[info.length - 1];
+          if (/\.(png|jpe?g|svg|gif|tiff|bmp|ico)$/i.test(assetInfo.name)) {
+            return `assets/images/[name]-[hash:8].[ext]`;
+          }
+          if (/\.(woff2?|eot|ttf|otf)$/i.test(assetInfo.name)) {
+            return `assets/fonts/[name]-[hash:8].[ext]`;
+          }
+          return `assets/[ext]/[name]-[hash:8].[ext]`;
+        },
+      },
+      // External dependencies that should not be bundled
+      external: (id) => {
+        // Keep all dependencies bundled for now, but this can be used for CDN optimization later
+        return false;
       },
     },
-    // Increase chunk size warning limit
-    chunkSizeWarningLimit: 1000,
-    // Enable source maps for production debugging (optional)
+    // Reduce chunk size warning limit to catch bloated chunks
+    chunkSizeWarningLimit: 500,
+    // Disable source maps in production for smaller bundles
     sourcemap: mode === 'development',
+    // Enable CSS code splitting for better caching
+    cssCodeSplit: true,
+    // Optimize asset inlining threshold
+    assetsInlineLimit: 4096, // 4KB threshold for inlining assets
+    // CSS minification options (using default esbuild for compatibility)
+    cssMinify: true,
   },
 
-  // Optimize dependencies
+  // Optimize dependencies with better pre-bundling
   optimizeDeps: {
     include: [
       'react',
       'react-dom',
       'react-router-dom',
+      // Only include essential animation libraries in pre-bundling
+      'react-intersection-observer',
+    ],
+    exclude: [
+      '@vite/client',
+      '@vite/env',
+      // Exclude heavy libraries from pre-bundling to allow better chunking
       'framer-motion',
       'gsap',
       'lenis',
-      'lucide-react',
+      'swiper',
     ],
-    exclude: ['@vite/client', '@vite/env'],
+  },
+
+  // Performance optimizations
+  esbuild: {
+    // Remove unused imports in production
+    treeShaking: true,
+    // Optimize for modern browsers
+    target: 'es2020',
   },
 }));
