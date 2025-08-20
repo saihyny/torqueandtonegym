@@ -7,8 +7,9 @@ import viteCompression from "vite-plugin-compression";
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
   // CRITICAL: Set base URL for production deployment
-  // Change '/subfolder/' to match your actual deployment path
-  base: mode === 'production' ? '/' : '/',
+  // If your site is at yourdomain.com/subfolder/, change this to '/subfolder/'
+  // If your site is at the root (yourdomain.com), keep it as '/'
+  base: mode === 'production' ? './' : '/',
 
   server: {
     host: "::",
