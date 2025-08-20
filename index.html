@@ -29,51 +29,14 @@
     <!-- Canonical URL -->
     <link rel="canonical" href="https://torqueandtonefitness.com/" />
 
-    <!-- PERFORMANCE OPTIMIZED: Font loading strategy -->
     <!-- DNS Prefetch for Performance -->
     <link rel="dns-prefetch" href="//fonts.googleapis.com" />
     <link rel="dns-prefetch" href="//fonts.gstatic.com" />
 
-    <!-- Preconnect for faster font loading -->
+    <!-- Premium Fonts with Performance Optimization -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <!-- Preload critical font files for immediate rendering -->
-    <link rel="preload" href="https://fonts.gstatic.com/s/oswald/v53/TK3_WkUHHAIjg75cFRf3bXL8LICs1_FvsUtiZTaR.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hiJ-Ek-_EeA.woff2" as="font" type="font/woff2" crossorigin>
-
-    <!-- Load fonts with optimized display strategy -->
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-    <!-- Font display optimization CSS -->
-    <style>
-      /* Ensure fonts render immediately with fallbacks */
-      .font-oswald { font-display: swap; }
-      .font-inter { font-display: swap; }
-
-      /* Critical font loading optimization */
-      @font-face {
-        font-family: 'Oswald-Fallback';
-        src: local('Arial Black'), local('Arial Bold'), local('Helvetica Bold');
-        font-weight: 600;
-        font-display: block;
-        ascent-override: 105%;
-        descent-override: 35%;
-        line-gap-override: 10%;
-        size-adjust: 92.5%;
-      }
-
-      @font-face {
-        font-family: 'Inter-Fallback';
-        src: local('Arial'), local('Helvetica'), local('sans-serif');
-        font-weight: 400;
-        font-display: block;
-        ascent-override: 90%;
-        descent-override: 22%;
-        line-gap-override: 0%;
-        size-adjust: 107%;
-      }
-    </style>
 
     <!-- Structured Data for Local Business (Critical for Indexing) -->
     <script type="application/ld+json">
@@ -158,31 +121,16 @@
     <meta name="format-detection" content="telephone=yes" />
     <meta name="mobile-web-app-capable" content="yes" />
 
-    <!-- PWA Manifest -->
-    <link rel="manifest" href="/manifest.json" />
-
     <!-- Favicon and Icons -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="apple-touch-icon" href="/favicon.ico" />
 
-    <!-- PWA Meta Tags -->
-    <meta name="application-name" content="TORQUE & TONE FITNESS" />
-    <meta name="apple-mobile-web-app-title" content="Torque & Tone" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-    <meta name="mobile-web-app-capable" content="yes" />
-    <meta name="msapplication-TileColor" content="#dc2626" />
-    <meta name="msapplication-config" content="/browserconfig.xml" />
+    <!-- Preload Critical Resources -->
+    <link rel="preload" href="/hero-bodybuilder.jpg" as="image" type="image/jpeg" />
 
-    <!-- Preload Critical Resources for LCP Optimization -->
-    <link rel="preload" href="/hero-bodybuilder.jpg" as="image" type="image/jpeg" fetchpriority="high" />
-
-    <!-- Preload modern image formats if available -->
-    <link rel="preload" href="/hero-bodybuilder.webp" as="image" type="image/webp" fetchpriority="high" media="(min-width: 768px)" />
-    <link rel="preload" href="/hero-bodybuilder.avif" as="image" type="image/avif" fetchpriority="high" media="(min-width: 768px)" />
-
-    <!-- Security Headers (X-Frame-Options removed - must be set via HTTP headers on Netlify) -->
+    <!-- Security Headers -->
     <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta http-equiv="X-Frame-Options" content="DENY" />
     <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
   </head>
 

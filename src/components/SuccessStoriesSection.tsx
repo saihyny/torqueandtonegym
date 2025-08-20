@@ -6,7 +6,6 @@ import { useInView } from 'react-intersection-observer';
 import { AnimatePresence, motion } from 'framer-motion';
 import ThemedGlowCard from './ui/ThemedGlowCard'
 import MaskedDiv from './ui/masked-div';      // Adjust import path
-import { LazyImage } from '@/components/OptimizedImage';
 
 // --- Data for our carousel ---
 const stories = [
@@ -135,11 +134,9 @@ const SuccessStoriesSection = () => {
                       <div className="w-full text-center">
                         <h4 className="font-oswald text-2xl text-white mb-4">BEFORE</h4>
                         <MaskedDiv maskType="type-1" size={0.9}>
-                          <LazyImage
+                          <img
                             src={activeStory.beforeImage}
                             alt={`${activeStory.name} before`}
-                            width={400}
-                            height={500}
                             className="w-full h-full object-cover [filter:drop-shadow(0_0_1px_rgba(255,255,255,0.4))]"
                           />
                         </MaskedDiv>
@@ -147,11 +144,9 @@ const SuccessStoriesSection = () => {
                       <div className="w-full text-center">
                         <h4 className="font-oswald text-2xl text-primary mb-4">AFTER</h4>
                         <MaskedDiv maskType="type-1" size={0.9} className="rotate-180 ">
-                          <LazyImage
+                          <img
                             src={activeStory.afterImage}
                             alt={`${activeStory.name} after`}
-                            width={400}
-                            height={500}
                             className="w-full h-full object-cover rotate-180 [filter:drop-shadow(0_0_1px_rgba(255,255,255,0.4))]"
                           />
                         </MaskedDiv>

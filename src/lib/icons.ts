@@ -1,31 +1,37 @@
-// PERFORMANCE OPTIMIZED: Selective icon imports
-// Using main export for compatibility while still being selective about which icons we import
-// This reduces bundle size by only importing what we need
+// Optimized icon imports - only import what we actually use
+// This reduces the lucide-react bundle size significantly
 
-// Critical UI Icons (loaded immediately)
-export {
-  ChevronDown,
-  ChevronRight,
-  ChevronLeft,
-  ChevronUp,
-  X,
-  Check,
-  Search,
-  MoreHorizontal,
-  ArrowLeft,
-  ArrowRight,
-  Circle,
-  Dot,
-  GripVertical,
-  PanelLeft
-} from "lucide-react";
+// UI Component Icons
+export { ChevronDown } from "lucide-react";
+export { ChevronRight } from "lucide-react";
+export { ChevronLeft } from "lucide-react";
+export { ChevronUp } from "lucide-react";
+export { MoreHorizontal } from "lucide-react";
+export { ArrowLeft } from "lucide-react";
+export { ArrowRight } from "lucide-react";
+export { Check } from "lucide-react";
+export { Search } from "lucide-react";
+export { Circle } from "lucide-react";
+export { X } from "lucide-react";
+export { Dot } from "lucide-react";
+export { GripVertical } from "lucide-react";
+export { PanelLeft } from "lucide-react";
 
-// Business/App Specific Icons (tree-shakable imports)
-// Using fallback to main export for compatibility
-export { MapPin, Phone, Mail, Star, Dumbbell, Users, Apple, Zap, Target, Heart, Play, Volume2 } from "lucide-react";
-
-// Social media icons - using main export for compatibility
-export { Instagram, Facebook, Twitter, Youtube, Linkedin } from "lucide-react";
-
-// Performance Note: This reduces lucide-react bundle size from ~500KB to ~50KB
-// by only including the specific icons we use instead of the entire icon library
+// Business/App Specific Icons
+export { MapPin } from "lucide-react";
+export { Phone } from "lucide-react";
+export { Mail } from "lucide-react";
+export { Instagram } from "lucide-react";
+export { Facebook } from "lucide-react";
+export { Twitter } from "lucide-react";
+export { Youtube } from "lucide-react";
+export { Star } from "lucide-react";
+export { Dumbbell } from "lucide-react";
+export { Users } from "lucide-react";
+export { Apple } from "lucide-react";
+export { Zap } from "lucide-react";
+export { Target } from "lucide-react";
+export { Heart } from "lucide-react";
+export { Linkedin } from "lucide-react";
+export { Play } from "lucide-react";
+export { Volume2 } from "lucide-react";

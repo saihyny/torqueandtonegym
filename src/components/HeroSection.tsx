@@ -1,10 +1,8 @@
-import { useEffect, useRef, useState, memo, useMemo, useCallback } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { ScrollTrigger } from 'gsap/ScrollTrigger'; // You still need to import it
+import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { LightweightAnimations, useOptimizedAnimation } from '@/lib/animations';
-import { useRenderPerformance } from '@/lib/react-performance';
-import { HeroImage } from '@/components/OptimizedImage';
 import BookingForm from '@/components/BookingForm';
 import heroImage from '@/assets/hero-bodybuilder.jpg';
 
@@ -16,21 +14,14 @@ testImg.src = heroImage;
 // The plugin is now registered in index.tsx, so we remove the registration line from here.
 // gsap.registerPlugin(ScrollTrigger); // <-- REMOVED THIS LINE
 
-const HeroSection = memo(() => {
-  // Performance monitoring
-  useRenderPerformance('HeroSection');
-
+const HeroSection = () => {
   const heroRef = useRef<HTMLDivElement>(null);
   const textRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLDivElement>(null);
   const [currentWord, setCurrentWord] = useState(0);
   const { ref: inViewRef, inView } = useInView({ threshold: 0.3, triggerOnce: true });
 
-  // Use lightweight animation hooks
-  const { cssHover, tap } = useOptimizedAnimation();
-
-  // Memoize static data to prevent recreation on every render
-  const words = useMemo(() => ['GET STRONGER', 'GET FASTER', 'GET FITTER', 'GET BETTER'], []);
+  const words = ['GET STRONGER', 'GET FASTER', 'GET FITTER', 'GET BETTER'];
 
   // Ensure image is visible on mount
   useEffect(() => {
@@ -188,13 +179,31 @@ const HeroSection = memo(() => {
           height: '100%',
         }}
       >
-        <HeroImage
+        <img
           src={heroImage}
           alt="Professional bodybuilder training at TORQUE & TONE FITNESS"
           className="w-full h-full object-cover"
+          style={{
+            opacity: 1,
+            visibility: 'visible',
+          
+          }}
+          onLoad={(e) => {
+            const img = e.target as HTMLImageElement;
+            console.log('✅ Hero image loaded successfully!');
+            console.log('🖼️ Image dimensions:', img.naturalWidth, 'x', img.naturalHeight);
+            console.log('🖼️ Image src:', img.src);
+            console.log('🖼️ Image complete:', img.complete);
+          }}
+          onError={(e) => {
+            const img = e.target as HTMLImageElement;
+            console.error('❌ Hero image failed to load!');
+            console.error('🖼️ Failed src:', img.src);
+            console.error('🖼️ Error event:', e);
+          }}
         />
-        {/* Overlay for text readability */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/60" />
+        {/* THIS IS THE LINE THAT WAS REMOVED. The overlay is gone, so the image is 100% visible. */}
+        {/* <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/60" /> */}
       </div>
 
       <div className="container mx-auto px-6 lg:px-8 relative z-10">
@@ -214,29 +223,23 @@ const HeroSection = memo(() => {
               </p>
             </div>
 
-            {/* CTA - Optimized with lightweight animations */}
+            {/* CTA */}
             <div className="pt-10 animate-element">
-              <button
-                className='btn-hero'
-                onClick={() => window.open('https://wa.me/919963000000', '_blank')}
-                {...cssHover(1.08)}
-                {...tap(0.95)}
-                style={{
-                  ...cssHover(1.08).style,
-                  willChange: 'transform',
-                }}
+              <motion.div
+                whileHover={{ scale: 1.08, y: -3 }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ type: 'spring', stiffness: 300 }}
               >
-                Get Started
-              </button>
+             <button className='btn-hero ' onClick={() => window.open('https://wa.me/919963000000', '_blank')}>Get Started</button>
+              </motion.div>
             </div>
           </div>
         </div>
       </div>
     </section>
-  );
-});
 
-// Add display name for debugging
-HeroSection.displayName = 'HeroSection';
+   
+  );
+};
 
 export default HeroSection;

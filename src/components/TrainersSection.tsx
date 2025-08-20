@@ -3,7 +3,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, EffectCoverflow, Pagination } from "swiper/modules";
 import { Badge } from "@/components/ui/badge"; // Assuming you have this component
 import { Instagram, Twitter, Linkedin } from "@/lib/icons";
-import { LazyImage } from "@/components/OptimizedImage";
 
 // CSS Imports
 import "swiper/css";
@@ -138,11 +137,9 @@ const TrainersSection = () => {
     id: trainer.id,
     Component: () => (
       <div className="relative w-full h-full text-white">
-        <LazyImage
-          src={trainer.image}
-          alt={trainer.name}
-          width={400}
-          height={450}
+        <img 
+          src={trainer.image} 
+          alt={trainer.name} 
           className="absolute inset-0 w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />

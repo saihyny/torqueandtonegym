@@ -1,4 +1,4 @@
-import { useEffect, useRef, lazy, Suspense } from "react";
+import { useEffect, useRef, lazy } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from "lenis";
@@ -6,7 +6,6 @@ import HeroSection from "@/components/HeroSection";
 import Navbar from "@/components/Navbar";
 import LazyWrapper from "@/components/LazyWrapper";
 import SchemaProvider from "@/components/schema/SchemaProvider";
-import { ErrorBoundary } from "@/lib/react-performance";
 import { PerformanceMonitor, measureBundleSize } from "@/lib/performance";
 
 // Lazy load heavy components to improve initial load time
@@ -105,33 +104,13 @@ const Index = () => {
   }, []);
 
   return (
-    <ErrorBoundary
-      fallback={(error) => (
-        <div className="min-h-screen flex items-center justify-center bg-background text-foreground">
-          <div className="text-center p-8">
-            <h1 className="text-2xl font-bold text-red-500 mb-4">Something went wrong</h1>
-            <p className="text-gray-400 mb-4">{error.message}</p>
-            <button
-              onClick={() => window.location.reload()}
-              className="btn-hero"
-            >
-              Reload Page
-            </button>
-          </div>
-        </div>
-      )}
-      onError={(error, errorInfo) => {
-        console.error('Application error:', error, errorInfo);
-        // You can send this to your error reporting service
-      }}
-    >
-      <SchemaProvider>
-        <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
-          {/* Navigation */}
-          <Navbar />
+    <SchemaProvider>
+      <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
+        {/* Navigation */}
+        <Navbar />
 
-          {/* Main Content */}
-          <main>
+        {/* Main Content */}
+        <main>
           {/* Hero Section */}
           <section id="home">
             <HeroSection />
@@ -207,7 +186,6 @@ const Index = () => {
         </div>
       </div>
     </SchemaProvider>
-    </ErrorBoundary>
   );
 };
 
