@@ -1,0 +1,101 @@
+{
+  "name": "TORQUE & TONE FITNESS - Premium Gym & Personal Training",
+  "short_name": "Torque & Tone",
+  "description": "Transform your body at TORQUE & TONE FITNESS in Kompally, Hyderabad. Premium gym with certified personal trainers, group fitness classes, nutrition coaching, and state-of-the-art equipment.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#070707",
+  "theme_color": "#dc2626",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "en-US",
+  "dir": "ltr",
+  "categories": ["fitness", "health", "lifestyle", "sports"],
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "16x16 32x32 48x48",
+      "type": "image/x-icon",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/screenshot-wide.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "TORQUE & TONE FITNESS - Premium gym facility"
+    },
+    {
+      "src": "/screenshot-narrow.png",
+      "sizes": "640x1136",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "TORQUE & TONE FITNESS - Mobile experience"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Book Training Session",
+      "short_name": "Book Session",
+      "description": "Book a personal training session",
+      "url": "/#contact",
+      "icons": [
+        {
+          "src": "/shortcut-book.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "View Programs",
+      "short_name": "Programs",
+      "description": "Explore our fitness programs",
+      "url": "/#programs",
+      "icons": [
+        {
+          "src": "/shortcut-programs.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Meet Trainers",
+      "short_name": "Trainers",
+      "description": "Meet our certified trainers",
+      "url": "/#trainers",
+      "icons": [
+        {
+          "src": "/shortcut-trainers.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false,
+  "edge_side_panel": {
+    "preferred_width": 400
+  },
+  "launch_handler": {
+    "client_mode": "navigate-existing"
+  },
+  "handle_links": "preferred",
+  "capture_links": "existing-client-navigate"
+}

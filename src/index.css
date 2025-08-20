@@ -87,9 +87,16 @@
 
   body {
     @apply bg-background text-foreground font-inter antialiased;
-    background-image: 
+    /* PERFORMANCE: Simplified background for better rendering */
+    background-image:
       radial-gradient(circle at 20% 50%, hsla(var(--primary), 0.05) 0%, transparent 50%),
       radial-gradient(circle at 80% 20%, hsla(var(--primary), 0.03) 0%, transparent 50%);
+    /* Optimize font rendering */
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* Improve scrolling performance */
+    -webkit-overflow-scrolling: touch;
   }
 
   /* Typography Scale */

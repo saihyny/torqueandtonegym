@@ -1,17 +1,22 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, lazy, Suspense } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from "lenis";
 import HeroSection from "@/components/HeroSection";
-import ProgramsSection from "@/components/ProgramsSection";
-import TrainersSection from "@/components/TrainersSection";
-import SuccessStoriesSection from "@/components/SuccessStoriesSection";
-import VideoSection from "@/components/VideoSection";
-import PricingSection from "@/components/PricingSection";
-import ContactSection from "@/components/ContactSection";
-import Footer from "@/components/Footer";
-import Navbar from "@/components/Navbar"; // Import the separate Navbar component
+import Navbar from "@/components/Navbar";
+import LazyWrapper from "@/components/LazyWrapper";
 import SchemaProvider from "@/components/schema/SchemaProvider";
+import { ErrorBoundary } from "@/lib/react-performance";
+import { PerformanceMonitor, measureBundleSize } from "@/lib/performance";
+
+// Lazy load heavy components to improve initial load time
+const ProgramsSection = lazy(() => import("@/components/ProgramsSection"));
+const TrainersSection = lazy(() => import("@/components/TrainersSection"));
+const SuccessStoriesSection = lazy(() => import("@/components/SuccessStoriesSection"));
+const VideoSection = lazy(() => import("@/components/VideoSection"));
+const PricingSection = lazy(() => import("@/components/PricingSection"));
+const ContactSection = lazy(() => import("@/components/ContactSection"));
+const Footer = lazy(() => import("@/components/Footer"));
 
 // Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger);
@@ -20,6 +25,10 @@ const Index = () => {
   const lenisRef = useRef<Lenis | null>(null);
 
   useEffect(() => {
+    // Initialize performance monitoring
+    const monitor = PerformanceMonitor.getInstance();
+    monitor.init();
+    measureBundleSize();
     // Initialize Lenis smooth scroll
     const lenis = new Lenis({
       duration: 1.2,
@@ -96,13 +105,33 @@ const Index = () => {
   }, []);
 
   return (
-    <SchemaProvider>
-      <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
-        {/* Navigation */}
-        <Navbar />
+    <ErrorBoundary
+      fallback={(error) => (
+        <div className="min-h-screen flex items-center justify-center bg-background text-foreground">
+          <div className="text-center p-8">
+            <h1 className="text-2xl font-bold text-red-500 mb-4">Something went wrong</h1>
+            <p className="text-gray-400 mb-4">{error.message}</p>
+            <button
+              onClick={() => window.location.reload()}
+              className="btn-hero"
+            >
+              Reload Page
+            </button>
+          </div>
+        </div>
+      )}
+      onError={(error, errorInfo) => {
+        console.error('Application error:', error, errorInfo);
+        // You can send this to your error reporting service
+      }}
+    >
+      <SchemaProvider>
+        <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
+          {/* Navigation */}
+          <Navbar />
 
-        {/* Main Content */}
-        <main>
+          {/* Main Content */}
+          <main>
           {/* Hero Section */}
           <section id="home">
             <HeroSection />
@@ -110,35 +139,49 @@ const Index = () => {
 
           {/* Programs Section */}
           <section id="programs">
-            <ProgramsSection />
+            <LazyWrapper fallback={<div className="min-h-[400px] flex items-center justify-center"><div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div></div>}>
+              <ProgramsSection />
+            </LazyWrapper>
           </section>
 
           {/* Trainers Section */}
           <section id="trainers">
-            <TrainersSection />
+            <LazyWrapper fallback={<div className="min-h-[400px] flex items-center justify-center"><div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div></div>}>
+              <TrainersSection />
+            </LazyWrapper>
           </section>
 
           {/* Video Section */}
-          <VideoSection />
+          <LazyWrapper fallback={<div className="min-h-[300px] flex items-center justify-center"><div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div></div>}>
+            <VideoSection />
+          </LazyWrapper>
 
           {/* Success Stories Section */}
           <section id="success">
-            <SuccessStoriesSection />
+            <LazyWrapper fallback={<div className="min-h-[400px] flex items-center justify-center"><div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div></div>}>
+              <SuccessStoriesSection />
+            </LazyWrapper>
           </section>
 
           {/* Pricing Section */}
           <section id="pricing">
-            <PricingSection />
+            <LazyWrapper fallback={<div className="min-h-[400px] flex items-center justify-center"><div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div></div>}>
+              <PricingSection />
+            </LazyWrapper>
           </section>
 
           {/* Contact Section */}
           <section id="contact">
-            <ContactSection />
+            <LazyWrapper fallback={<div className="min-h-[500px] flex items-center justify-center"><div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div></div>}>
+              <ContactSection />
+            </LazyWrapper>
           </section>
         </main>
 
         {/* Footer */}
-        <Footer />
+        <LazyWrapper fallback={<div className="min-h-[200px] flex items-center justify-center"><div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div></div>}>
+          <Footer />
+        </LazyWrapper>
 
         {/* Floating Action Button */}
         <div className="fixed bottom-8 right-8 z-40">
@@ -164,6 +207,7 @@ const Index = () => {
         </div>
       </div>
     </SchemaProvider>
+    </ErrorBoundary>
   );
 };
 

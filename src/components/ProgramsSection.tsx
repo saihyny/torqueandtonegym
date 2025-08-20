@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Dumbbell, Users, Apple, Zap, Target, Heart, ChevronRight } from 'lucide-react';
+import { Dumbbell, Users, Apple, Zap, Target, Heart, ChevronRight } from '@/lib/icons';
 import { SkiperCard } from "@/components/ui/skiper-card"; // Adjust this import path if needed
 import ProgramModal from './ProgramModal'; // Import the new modal component
 

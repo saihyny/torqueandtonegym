@@ -1,82 +1,66 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, memo, useMemo, useCallback } from 'react';
 import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger'; // You still need to import it
-import { motion, AnimatePresence } from 'framer-motion';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useInView } from 'react-intersection-observer';
+import { LightweightAnimations, useOptimizedAnimation } from '@/lib/animations';
+import { useRenderPerformance } from '@/lib/react-performance';
+import { HeroImage } from '@/components/OptimizedImage';
 import BookingForm from '@/components/BookingForm';
 import heroImage from '@/assets/hero-bodybuilder.jpg';
-// Alternative import methods for testing
-const heroImageUrl = '/src/assets/hero-bodybuilder.jpg';
-const heroImagePublic = '/hero-bodybuilder.jpg';
 
-// Debug: Log the imported image path
-console.log('🖼️ Hero image path:', heroImage);
-console.log('🖼️ Hero image type:', typeof heroImage);
-console.log('🖼️ Alternative URL path:', heroImageUrl);
-console.log('🖼️ Alternative public path:', heroImagePublic);
 
-// Test if image can be loaded independently
+// Preload hero image for better performance
 const testImg = new Image();
-testImg.onload = () => console.log('✅ Test image loaded successfully');
-testImg.onerror = () => console.error('❌ Test image failed to load');
 testImg.src = heroImage;
 
 // The plugin is now registered in index.tsx, so we remove the registration line from here.
 // gsap.registerPlugin(ScrollTrigger); // <-- REMOVED THIS LINE
 
-const HeroSection = () => {
+const HeroSection = memo(() => {
+  // Performance monitoring
+  useRenderPerformance('HeroSection');
+
   const heroRef = useRef<HTMLDivElement>(null);
   const textRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLDivElement>(null);
   const [currentWord, setCurrentWord] = useState(0);
   const { ref: inViewRef, inView } = useInView({ threshold: 0.3, triggerOnce: true });
 
-  const words = ['GET STRONGER', 'GET FASTER', 'GET FITTER', 'GET BETTER'];
+  // Use lightweight animation hooks
+  const { cssHover, tap } = useOptimizedAnimation();
+
+  // Memoize static data to prevent recreation on every render
+  const words = useMemo(() => ['GET STRONGER', 'GET FASTER', 'GET FITTER', 'GET BETTER'], []);
 
   // Ensure image is visible on mount
   useEffect(() => {
-    console.log('🔧 HeroSection mounted, checking image container...');
     if (imageRef.current) {
-      // Force image visibility
+      // Force image visibility for better performance
       const imageContainer = imageRef.current;
-      console.log('📦 Image container found:', imageContainer);
-      console.log('📦 Container styles before:', {
-        opacity: imageContainer.style.opacity,
-        visibility: imageContainer.style.visibility,
-        display: imageContainer.style.display
-      });
-
       imageContainer.style.opacity = '1';
       imageContainer.style.visibility = 'visible';
       imageContainer.style.display = 'block';
 
       const img = imageContainer.querySelector('img');
       if (img) {
-        console.log('🖼️ Image element found:', img);
-        console.log('🖼️ Image src:', img.src);
-        console.log('🖼️ Image styles before:', {
-          opacity: img.style.opacity,
-          visibility: img.style.visibility,
-          display: img.style.display
-        });
         img.style.opacity = '1';
         img.style.visibility = 'visible';
         img.style.display = 'block';
-        console.log('✅ Image styles applied');
-      } else {
-        console.error('❌ No img element found in container');
       }
-    } else {
-      console.error('❌ No image container found');
     }
   }, []);
 
-  // Word flipper (every 3s)
+  // Word flipper (every 3s) - Start after initial render to improve LCP
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentWord(prev => (prev + 1) % words.length);
-    }, 3000);
-    return () => clearInterval(interval);
+    // Delay the animation start to improve LCP
+    const startDelay = setTimeout(() => {
+      const interval = setInterval(() => {
+        setCurrentWord(prev => (prev + 1) % words.length);
+      }, 3000);
+      return () => clearInterval(interval);
+    }, 1000); // Start animations after 1 second
+
+    return () => clearTimeout(startDelay);
   }, [words.length]);
 
   // GSAP animations
@@ -181,7 +165,7 @@ const HeroSection = () => {
     }
   }, [inView]);
 
-  console.log('🎬 HeroSection rendering...');
+
 
   return (
     <section
@@ -204,51 +188,22 @@ const HeroSection = () => {
           height: '100%',
         }}
       >
-        <img
+        <HeroImage
           src={heroImage}
           alt="Professional bodybuilder training at TORQUE & TONE FITNESS"
           className="w-full h-full object-cover"
-          style={{
-            opacity: 1,
-            visibility: 'visible',
-          
-          }}
-          onLoad={(e) => {
-            const img = e.target as HTMLImageElement;
-            console.log('✅ Hero image loaded successfully!');
-            console.log('🖼️ Image dimensions:', img.naturalWidth, 'x', img.naturalHeight);
-            console.log('🖼️ Image src:', img.src);
-            console.log('🖼️ Image complete:', img.complete);
-          }}
-          onError={(e) => {
-            const img = e.target as HTMLImageElement;
-            console.error('❌ Hero image failed to load!');
-            console.error('🖼️ Failed src:', img.src);
-            console.error('🖼️ Error event:', e);
-          }}
         />
-        {/* THIS IS THE LINE THAT WAS REMOVED. The overlay is gone, so the image is 100% visible. */}
-        {/* <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/60" /> */}
+        {/* Overlay for text readability */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/60" />
       </div>
 
       <div className="container mx-auto px-6 lg:px-8 relative z-10">
         <div ref={textRef} className="max-w-4xl mx-auto">
           <div className="space-y-10">
-            {/* Headline with flipping words */}
-            <div className="animate-element">
-              <h1 className="text-6xl md:text-8xl lg:text-9xl font-extrabold tracking-tight leading-tight text-white">
-                <AnimatePresence mode="wait">
-                  <motion.span
-                    key={words[currentWord]}
-                    initial={{ opacity: 0, rotateX: -90 }}
-                    animate={{ opacity: 1, rotateX: 0 }}
-                    exit={{ opacity: 0, rotateX: 90 }}
-                    transition={{ duration: 0.7, ease: 'easeInOut' }}
-                    className="inline-block text-gradient text-glow"
-                  >
-                    {words[currentWord]}
-                  </motion.span>
-                </AnimatePresence>
+            {/* Headline - Optimized for LCP (no initial animation) */}
+            <div>
+              <h1 className="text-6xl md:text-8xl lg:text-9xl font-extrabold tracking-tight leading-tight text-white text-gradient text-glow">
+                {words[currentWord]}
               </h1>
             </div>
 
@@ -259,23 +214,29 @@ const HeroSection = () => {
               </p>
             </div>
 
-            {/* CTA */}
+            {/* CTA - Optimized with lightweight animations */}
             <div className="pt-10 animate-element">
-              <motion.div
-                whileHover={{ scale: 1.08, y: -3 }}
-                whileTap={{ scale: 0.95 }}
-                transition={{ type: 'spring', stiffness: 300 }}
+              <button
+                className='btn-hero'
+                onClick={() => window.open('https://wa.me/919963000000', '_blank')}
+                {...cssHover(1.08)}
+                {...tap(0.95)}
+                style={{
+                  ...cssHover(1.08).style,
+                  willChange: 'transform',
+                }}
               >
-                <BookingForm />
-              </motion.div>
+                Get Started
+              </button>
             </div>
           </div>
         </div>
       </div>
     </section>
-
-   
   );
-};
+});
+
+// Add display name for debugging
+HeroSection.displayName = 'HeroSection';
 
 export default HeroSection;
