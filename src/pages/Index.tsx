@@ -11,6 +11,7 @@ import PricingSection from "@/components/PricingSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar"; // Import the separate Navbar component
+import SchemaProvider from "@/components/schema/SchemaProvider";
 
 // Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger);
@@ -95,72 +96,74 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
-      {/* Navigation */}
-      <Navbar />
+    <SchemaProvider>
+      <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
+        {/* Navigation */}
+        <Navbar />
 
-      {/* Main Content */}
-      <main>
-        {/* Hero Section */}
-        <section id="home">
-          <HeroSection />
-        </section>
+        {/* Main Content */}
+        <main>
+          {/* Hero Section */}
+          <section id="home">
+            <HeroSection />
+          </section>
 
-        {/* Programs Section */}
-        <section id="programs">
-          <ProgramsSection />
-        </section>
-        
-        {/* Trainers Section */}
-        <section id="trainers">
-          <TrainersSection />
-        </section>
+          {/* Programs Section */}
+          <section id="programs">
+            <ProgramsSection />
+          </section>
 
-        {/* Video Section */}
-        <VideoSection />
+          {/* Trainers Section */}
+          <section id="trainers">
+            <TrainersSection />
+          </section>
 
-        {/* Success Stories Section */}
-        <section id="success">
-          <SuccessStoriesSection />
-        </section>
+          {/* Video Section */}
+          <VideoSection />
 
-        {/* Pricing Section */}
-        <section id="pricing">
-          <PricingSection />
-        </section>
+          {/* Success Stories Section */}
+          <section id="success">
+            <SuccessStoriesSection />
+          </section>
 
-        {/* Contact Section */}
-        <section id="contact">
-          <ContactSection />
-        </section>
-      </main>
+          {/* Pricing Section */}
+          <section id="pricing">
+            <PricingSection />
+          </section>
 
-      {/* Footer */}
-      <Footer />
+          {/* Contact Section */}
+          <section id="contact">
+            <ContactSection />
+          </section>
+        </main>
 
-      {/* Floating Action Button */}
-      <div className="fixed bottom-8 right-8 z-40">
-        <a
-          href="#contact"
-          className="w-14 h-14 bg-primary hover:bg-primary-glow rounded-full flex items-center justify-center shadow-glow hover:scale-110 transition-all duration-300 group glow-pulse"
-          aria-label="Join Now"
-        >
-          <svg
-            className="w-6 h-6 text-white group-hover:scale-110 transition-transform duration-300"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
+        {/* Footer */}
+        <Footer />
+
+        {/* Floating Action Button */}
+        <div className="fixed bottom-8 right-8 z-40">
+          <a
+            href="#contact"
+            className="w-14 h-14 bg-primary hover:bg-primary-glow rounded-full flex items-center justify-center shadow-glow hover:scale-110 transition-all duration-300 group glow-pulse"
+            aria-label="Join Now"
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M12 6v6m0 0v6m0-6h6m-6 0H6"
-            />
-          </svg>
-        </a>
+            <svg
+              className="w-6 h-6 text-white group-hover:scale-110 transition-transform duration-300"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+              />
+            </svg>
+          </a>
+        </div>
       </div>
-    </div>
+    </SchemaProvider>
   );
 };
 
