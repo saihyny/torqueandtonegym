@@ -181,9 +181,8 @@
     <link rel="preload" href="/hero-bodybuilder.webp" as="image" type="image/webp" fetchpriority="high" media="(min-width: 768px)" />
     <link rel="preload" href="/hero-bodybuilder.avif" as="image" type="image/avif" fetchpriority="high" media="(min-width: 768px)" />
 
-    <!-- Security Headers -->
+    <!-- Security Headers (X-Frame-Options removed - must be set via HTTP headers on Netlify) -->
     <meta http-equiv="X-Content-Type-Options" content="nosniff" />
-    <meta http-equiv="X-Frame-Options" content="DENY" />
     <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
   </head>
 
