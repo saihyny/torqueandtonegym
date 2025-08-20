@@ -1,0 +1,18 @@
+{
+  "status": "healthy",
+  "timestamp": "2025-08-20T10:00:00+05:30",
+  "service": "TORQUE & TONE FITNESS Website",
+  "version": "1.0.0",
+  "environment": "production",
+  "checks": {
+    "server": "operational",
+    "database": "not_applicable",
+    "external_services": "operational"
+  },
+  "metadata": {
+    "location": "Kompally, Hyderabad, Telangana, India",
+    "contact": "torquetonefitness@gmail.com",
+    "website": "https://torqueandtonefitness.com",
+    "business_hours": "Mon-Fri: 5:00-23:00, Sat-Sun: 6:00-22:00"
+  }
+}

@@ -1,3 +1,38 @@
+# Robots.txt for TORQUE & TONE FITNESS
+# Enhanced configuration for better search engine indexing
+
+# Allow all search engines to crawl the entire site
 User-agent: *
 Allow: /
+Crawl-delay: 1
+
+# Specific instructions for major search engines
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Slurp
+Allow: /
+Crawl-delay: 1
+
+# Block common bot traffic that doesn't add SEO value
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+# Sitemap location
 Sitemap: https://torqueandtonefitness.com/sitemap.xml
+
+# Additional information
+# Website: https://torqueandtonefitness.com
+# Contact: torquetonefitness@gmail.com
+# Location: Kompally, Hyderabad, Telangana, India
