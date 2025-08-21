@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Dumbbell, Users, Apple, Zap, Target, Heart, ChevronRight } from 'lucide-react';
+import { Dumbbell, Users, Apple, Zap, Target, Heart, Music, Activity } from 'lucide-react';
 import { SkiperCard } from "@/components/ui/skiper-card"; // Adjust this import path if needed
 import ProgramModal from './ProgramModal'; // Import the new modal component
 
@@ -12,49 +12,56 @@ const ProgramsSection = () => {
   }, []);
 
   const programs = [
-    {
-      title: 'Personal Training',
-      description: 'One-on-one sessions with certified trainers tailored to your specific goals and fitness level.',
-      icon: Dumbbell,
-      bgColor: "bg-orange-950/20",
-      iconBg: "bg-orange-500"
-    },
-    {
-      title: 'Group Classes',
-      description: 'High-energy group workouts that motivate and challenge you alongside fellow fitness enthusiasts.',
-      icon: Users,
-      bgColor: "bg-blue-950/20",
-      iconBg: "bg-blue-500"
-    },
-    {
-      title: 'Nutrition Coaching',
-      description: 'Expert nutrition guidance to fuel your workouts and optimize your body composition.',
-      icon: Apple,
-      bgColor: "bg-green-950/20",
-      iconBg: "bg-green-500"
-    },
-    {
-      title: 'CrossFit Training',
-      description: 'Intense functional fitness workouts that build strength, endurance, and mental toughness.',
-      icon: Zap,
-      bgColor: "bg-yellow-950/20",
-      iconBg: "bg-yellow-500"
-    },
-    {
-      title: 'Yoga & Flexibility',
-      description: 'Improve mobility, balance, and mental wellness through guided yoga and stretching sessions.',
-      icon: Heart,
-      bgColor: "bg-pink-950/20",
-      iconBg: "bg-pink-500"
-    },
-    {
-      title: 'Athletic Performance',
-      description: 'Sport-specific training programs designed to enhance athletic performance and prevent injuries.',
-      icon: Target,
-      bgColor: "bg-purple-950/20",
-      iconBg: "bg-purple-500"
-    }
-  ];
+  {
+    title: 'Strength & Conditioning',
+    description: 'High-energy group workouts that motivate and challenge you alongside fellow fitness enthusiasts.',
+    icon: Users,
+    bgColor: "bg-blue-950/20",
+    iconBg: "bg-blue-500"
+  },
+  {
+    title: 'Personal Training',
+    description: 'One-on-one sessions with certified trainers tailored to your specific goals and fitness level.',
+    icon: Dumbbell,
+    bgColor: "bg-orange-950/20",
+    iconBg: "bg-orange-500"
+  },
+  {
+    title: 'Yoga',
+    description: 'Improve mobility, balance, and mental wellness through guided yoga and stretching sessions.',
+    icon: Heart,
+    bgColor: "bg-pink-950/20",
+    iconBg: "bg-pink-500"
+  },
+  {
+    title: 'Zumba',
+    description: 'Fun, high-energy dance workouts that combine Latin rhythms with cardio training.',
+    icon: Music,
+    bgColor: "bg-red-950/20",
+    iconBg: "bg-red-500"
+  },
+  {
+    title: 'Boxing & MMA',
+    description: 'Learn striking, footwork, and conditioning with boxing and mixed martial arts inspired training.',
+    icon: Activity,
+    bgColor: "bg-gray-950/20",
+    iconBg: "bg-gray-500"
+  },
+  {
+    title: 'CrossFit',
+    description: 'Intense functional fitness workouts that build strength, endurance, and mental toughness.',
+    icon: Zap,
+    bgColor: "bg-yellow-950/20",
+    iconBg: "bg-yellow-500"
+  },
+  {
+    title: 'Hyrox',
+    description: 'A unique fitness race combining running with functional workouts for the ultimate test of endurance.',
+    icon: Target,
+    bgColor: "bg-purple-950/20",
+    iconBg: "bg-purple-500"
+  }
+];
 
   const handleCardClick = (program) => {
     setSelectedProgram(program);

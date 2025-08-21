@@ -5,7 +5,7 @@ import { useGSAP } from '@gsap/react';
 import { useInView } from 'react-intersection-observer';
 import { Button } from '@/components/ui/button';
 import { Play, Volume2 } from 'lucide-react';
-import gymInteriorImage from '@/assets/gym-interior.jpg';
+import gymInteriorVideo from '@/assets/gym-interior.mp4';
 
 // Register GSAP plugins. This should be done once in your application's entry file,
 // but is included here for completeness of the component.
@@ -100,11 +100,14 @@ const VideoSection = () => {
       {/* We apply the `will-change` property via CSS (or inline style) to hint to the browser
           that this element's transform will be animated, allowing for optimization. */}
       <div className="absolute inset-0 z-0 parallax-bg" style={{ willChange: 'transform' }}>
-        <img 
+        {/* <img 
           src={gymInteriorImage}
           alt="TORQUE & TONE FITNESS gym interior"
           className="w-full h-[120%] object-cover" // Height is > 100% to have room for parallax
-        />
+        /> */}
+        <video className='w-full h-[120%] object-cover' autoPlay loop muted>
+          <source src={gymInteriorVideo} type="video/mp4" />
+        </video>
         <div className="absolute inset-0 bg-gradient-to-br from-background/80 via-background/60 to-background/80" />
         <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-primary/10 animate-pulse-slow" />
       </div>

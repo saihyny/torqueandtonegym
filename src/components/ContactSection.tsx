@@ -32,7 +32,7 @@ const ContactSection = () => {
     {
       icon: '🕒',
       title: 'Hours',
-      details: 'Mon-Fri: 5:00 AM - 11:00 PM\nSat-Sun: 6:00 AM - 10:00 PM',
+      details: 'Mon-Sat: 5:30AM - 10:00PM\nSun: 6:00AM - 10:00AM',
       link: '#'
     }
   ];

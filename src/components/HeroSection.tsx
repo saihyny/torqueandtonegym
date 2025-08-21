@@ -125,7 +125,7 @@ const HeroSection = () => {
           <div className="space-y-10">
             {/* Headline with flipping words */}
             <div className="animate-element">
-              <h1 className="text-6xl md:text-8xl lg:text-9xl font-extrabold tracking-tight leading-tight text-white">
+              <h1 className="text-6xl md:text-7xl lg:text-8xl font-extrabold tracking-tight leading-tight text-white">
                 <Suspense fallback={<span className="inline-block text-gradient text-glow">{words[0]}</span>}>
                   <AnimatePresence mode="wait">
                     <MotionSpan
@@ -152,9 +152,13 @@ const HeroSection = () => {
 
             {/* CTA */}
             <div className="pt-10 animate-element">
-              <Suspense fallback={<div>Loading form...</div>}>
-                <BookingForm />
-              </Suspense>
+              
+               <button>
+                <a href="#contact" className="btn-hero">
+                  let's get started
+                </a>
+              </button>
+             
             </div>
           </div>
         </div>
