@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
@@ -6,6 +6,7 @@ import { useInView } from 'react-intersection-observer';
 import { Button } from '@/components/ui/button';
 import { Play, Volume2 } from 'lucide-react';
 import gymInteriorVideo from '@/assets/gym-interior.mp4';
+import gymInteriorImage from '@/assets/gym-interior.jpg';
 
 // Register GSAP plugins. This should be done once in your application's entry file,
 // but is included here for completeness of the component.
@@ -14,6 +15,15 @@ gsap.registerPlugin(ScrollTrigger);
 const VideoSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const { ref: inViewRef, inView } = useInView({ threshold: 0.3, triggerOnce: true });
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    if (inView && videoRef.current) {
+      videoRef.current.play().catch(() => {
+        // Handle autoplay policy gracefully
+      });
+    }
+  }, [inView]);
 
   // useGSAP is the modern way to use GSAP in React.
   // It automatically handles cleanup, preventing memory leaks.
@@ -22,7 +32,7 @@ const VideoSection = () => {
     // Instead of using onUpdate, we create a single timeline controlled by ScrollTrigger.
     // This is far more performant as it doesn't run JS on every scroll frame.
     // We animate the `yPercent` property to move the image.
-    gsap.to('.parallax-bg img', {
+    gsap.to('.parallax-bg video', {
       yPercent: -20, // Move the image up by 20% of its height
       ease: 'none',
       scrollTrigger: {
@@ -105,7 +115,18 @@ const VideoSection = () => {
           alt="TORQUE & TONE FITNESS gym interior"
           className="w-full h-[120%] object-cover" // Height is > 100% to have room for parallax
         /> */}
-        <video className='w-full h-[120%] object-cover' autoPlay loop muted>
+        <video
+          ref={videoRef}
+          className='w-full h-[120%] object-cover'
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="auto"
+          poster={gymInteriorImage}
+          aria-label="Gym interior video background"
+          tabIndex={-1}
+        >
           <source src={gymInteriorVideo} type="video/mp4" />
         </video>
         <div className="absolute inset-0 bg-gradient-to-br from-background/80 via-background/60 to-background/80" />
