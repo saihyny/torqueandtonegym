@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import desktoplogo from '../../src/assets/logo_text.png'
+import mobilelogo from '../../src/assets/logo_icon.png'
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -26,9 +28,18 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex items-center">
-            <a href="#home" className="text-2xl font-oswald font-bold text-gradient">
-             TORQUE & TONE FITNESS
-            </a>
+            {/* Desktop Logo: Hidden on small screens, visible on medium and up */}
+            <img
+              src={desktoplogo}
+              alt="TORQUE & TONE FITNESS"
+              className="hidden md:block h-10 w-auto" // Added responsive classes
+            />
+            {/* Mobile Logo: Visible on small screens, hidden on medium and up */}
+             <img
+              src={mobilelogo}
+              alt="TORQUE & TONE FITNESS"
+              className="block md:hidden h-10 w-auto" // Added responsive classes
+            />
           </div>
 
           {/* Navigation Links - Desktop */}
