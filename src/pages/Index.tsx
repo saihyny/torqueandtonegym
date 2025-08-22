@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react"; // Import useState
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from "lenis";
@@ -10,17 +10,17 @@ import VideoSection from "@/components/VideoSection";
 import PricingSection from "@/components/PricingSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
-import Navbar from "@/components/Navbar"; // Import the separate Navbar component
+import Navbar from "@/components/Navbar";
 import SchemaProvider from "@/components/schema/SchemaProvider";
+import { GroupedMaskedGalleryPage } from "@/components/GroupedMaskedGalleryPage";
 
-// Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger);
 
 const Index = () => {
   const lenisRef = useRef<Lenis | null>(null);
+  const [isGalleryExpanded, setIsGalleryExpanded] = useState(false); // State for gallery expansion
 
   useEffect(() => {
-    // Initialize Lenis smooth scroll
     const lenis = new Lenis({
       duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -30,22 +30,17 @@ const Index = () => {
 
     lenisRef.current = lenis;
 
-    // Sync GSAP ScrollTrigger with Lenis
     lenis.on("scroll", () => {
       ScrollTrigger.update();
     });
 
-    // GSAP ticker for smooth animation frame
     gsap.ticker.add((time) => {
       lenis.raf(time * 1000);
     });
 
     gsap.ticker.lagSmoothing(0);
-
-    // Global parallax animations
     gsap.registerPlugin(ScrollTrigger);
 
-    // Background parallax
     gsap.to(".parallax-bg", {
       yPercent: -50,
       ease: "none",
@@ -57,7 +52,6 @@ const Index = () => {
       },
     });
 
-    // Smooth scrolling for anchor links
     const smoothScroll = (e: Event) => {
       e.preventDefault();
       const target = e.target as HTMLAnchorElement;
@@ -74,13 +68,11 @@ const Index = () => {
       }
     };
 
-    // Add event listeners for smooth scrolling
     const links = document.querySelectorAll('a[href^="#"]');
     links.forEach((link) => {
       link.addEventListener("click", smoothScroll);
     });
 
-    // Cleanup
     return () => {
       links.forEach((link) => {
         link.removeEventListener("click", smoothScroll);
@@ -95,52 +87,45 @@ const Index = () => {
     };
   }, []);
 
+  const handleGalleryToggle = () => {
+    setIsGalleryExpanded((prev) => !prev);
+  };
+
   return (
     <SchemaProvider>
       <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
-        {/* Navigation */}
         <Navbar />
-
-        {/* Main Content */}
         <main>
-          {/* Hero Section */}
           <section id="home">
             <HeroSection />
           </section>
-
-          {/* Programs Section */}
           <section id="programs">
             <ProgramsSection />
           </section>
-
-          {/* Trainers Section */}
           <section id="trainers">
             <TrainersSection />
           </section>
-
-          {/* Video Section */}
           <VideoSection />
-
-          {/* Success Stories Section */}
+          <section id="gallery" className="text-center">
+            <GroupedMaskedGalleryPage isExpanded={isGalleryExpanded} />
+            <button
+              onClick={handleGalleryToggle}
+              className="mt-8 px-8 py-3 bg-primary text-white font-semibold rounded-full shadow-lg hover:bg-primary-glow transition-all duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary-glow focus:ring-opacity-50"
+            >
+              {isGalleryExpanded ? "Show Less" : "Show More"}
+            </button>
+          </section>
           <section id="success">
             <SuccessStoriesSection />
           </section>
-
-          {/* Pricing Section */}
           <section id="pricing">
             <PricingSection />
           </section>
-
-          {/* Contact Section */}
           <section id="contact">
             <ContactSection />
           </section>
         </main>
-
-        {/* Footer */}
         <Footer />
-
-        {/* Floating Action Button */}
         <div className="fixed bottom-8 right-8 z-40">
           <a
             href="#contact"
