@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import desktoplogo from '../../src/assets/logo_text.png';
-import mobilelogo from '../../src/assets/logo_icon.png';
+
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -67,7 +67,7 @@ const Navbar = () => {
                 className="hidden md:block h-10 w-auto"
               />
               <img
-                src={mobilelogo}
+                src={desktoplogo}
                 alt="TORQUE & TONE FITNESS Mobile Logo"
                 className="block md:hidden h-10 w-auto"
               />
