@@ -64,17 +64,17 @@ const Navbar = () => {
               <img
                 src={desktoplogo}
                 alt="TORQUE & TONE FITNESS Desktop Logo"
-                className="hidden md:block h-10 w-auto"
+                className="hidden lg:block h-10 w-auto"
               />
               <img
                 src={desktoplogo}
                 alt="TORQUE & TONE FITNESS Mobile Logo"
-                className="block md:hidden h-10 w-auto"
+                className="block lg:hidden h-10 w-auto"
               />
             </a>
 
             {/* Desktop Navigation Links */}
-            <div className="hidden md:flex items-center space-x-8">
+            <div className="hidden lg:flex items-center space-x-8">
               {navLinks.map((link) => (
                 <a
                   key={link.href}
@@ -87,17 +87,17 @@ const Navbar = () => {
             </div>
 
             {/* Desktop CTA Button */}
-            <div className="hidden md:block">
+            <div className="hidden lg:block">
               <a
                 href="#contact"
-                className="bg-primary hover:bg-primary-glow text-white px-6 py-2 rounded-lg font-semibold transition-all duration-300 hover:scale-105 glow-pulse"
+                className="bg-primary hover:bg-primary-glow text-white px-6 py-2 rounded-lg font-semibold transition-all white-space-nowrap  duration-300 hover:scale-105 glow-pulse"
               >
                 Join Now
               </a>
             </div>
 
             {/* Mobile Menu Button (Hamburger/Close) */}
-            <div className="md:hidden">
+            <div className="lg:hidden">
               <button
                 onClick={toggleMenu}
                 className="text-muted-foreground hover:text-primary transition-transform duration-300 ease-in-out z-50"
@@ -137,7 +137,7 @@ const Navbar = () => {
       {/* Mobile Menu Overlay & Panel */}
       <div
         id="mobile-menu"
-        className={`fixed inset-0 z-40 md:hidden transition-all duration-300 ease-in-out ${
+        className={`fixed inset-0 z-40 lg:hidden transition-all duration-300 ease-in-out ${
           isMenuOpen ? "opacity-100 visible" : "opacity-0 invisible"
         }`}
       >

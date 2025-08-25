@@ -1,3 +1,4 @@
+/* Default Swiper pagination styles */
 .swiper-pagination {
   position: absolute;
   bottom: -10px !important;
@@ -10,9 +11,49 @@
   height: 8px;
   background-color: #4a4a4a; /* Inactive dot color */
   opacity: 1;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .swiper-pagination-bullet-active {
   background-color: #ffffff; /* Active dot color */
+}
+
+/* Custom pagination bullet styles */
+.custom-swiper-bullet {
+  width: 8px !important;
+  height: 8px !important;
+  border-radius: 50% !important;
+  transition: all 0.3s ease !important;
+  background-color: rgba(255, 255, 255, 0.4) !important;
+  opacity: 1 !important;
+  margin: 0 4px !important;
+}
+
+/* Active state for custom bullets */
+.custom-swiper-bullet-active {
+  transform: scale(1.25) !important;
+  background-color: hsl(var(--primary)) !important;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5) !important;
+}
+
+/* Mobile specific pagination adjustments */
+@media (max-width: 768px) {
+  .swiper-pagination-mobile {
+    bottom: 16px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+  }
+  
+  .custom-swiper-bullet {
+    width: 10px !important;
+    height: 10px !important;
+    margin: 0 5px !important;
+  }
+}
+
+/* Desktop specific pagination adjustments */
+@media (min-width: 769px) {
+  .swiper-pagination-desktop {
+    bottom: 8px !important;
+  }
 }
