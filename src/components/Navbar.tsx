@@ -47,7 +47,7 @@ const Navbar = () => {
     { href: "#success", title: "Success Stories" },
     { href: "#pricing", title: "Pricing" },
     { href: "#gallery", title: "Gallery" },
-    { href: "#contact", title: "Contact" },
+    { href: "#reviews", title: "Reviews" },
   ];
 
   return (

@@ -13,6 +13,8 @@ import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import SchemaProvider from "@/components/schema/SchemaProvider";
 import { GroupedMaskedGalleryPage } from "@/components/GroupedMaskedGalleryPage";
+import GymReviews from "@/components/Testimonials";
+
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -117,6 +119,9 @@ const Index = () => {
           </section>
           <section id="success">
             <SuccessStoriesSection />
+          </section>
+          <section id="reviews">
+            <GymReviews />
           </section>
           <section id="pricing">
             <PricingSection />
