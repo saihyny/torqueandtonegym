@@ -33,6 +33,7 @@ export default defineConfig(({ mode }) => ({
       ext: '.br',
     }),
   ].filter(Boolean),
+   assetsInclude: ['**/*.MP4'],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),

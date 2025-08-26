@@ -1,7 +1,7 @@
 import React from "react";
 import MaskedDiv from "././ui/masked-div";
-import dumbles from "@/assets/videos/dumbles.mp4";
-import legpress from "@/assets/videos/legpress.mp4";
+import dumbles from "@/assets/videos/dumbles.MP4";
+import legpress from "@/assets/videos/legpress.MP4";
 // Define the type for the props
 interface GroupedMaskedGalleryPageProps {
   isExpanded: boolean;
