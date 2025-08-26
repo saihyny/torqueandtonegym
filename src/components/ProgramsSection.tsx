@@ -33,13 +33,13 @@ const ProgramsSection = () => {
     bgColor: "bg-pink-950/20",
     iconBg: "bg-pink-500"
   },
-  {
-    title: 'Zumba',
-    description: 'Fun, high-energy dance workouts that combine Latin rhythms with cardio training.',
-    icon: Music,
-    bgColor: "bg-red-950/20",
-    iconBg: "bg-red-500"
-  },
+  // {
+  //   title: 'Zumba',
+  //   description: 'Fun, high-energy dance workouts that combine Latin rhythms with cardio training.',
+  //   icon: Music,
+  //   bgColor: "bg-red-950/20",
+  //   iconBg: "bg-red-500"
+  // },
   {
     title: 'Boxing & MMA',
     description: 'Learn striking, footwork, and conditioning with boxing and mixed martial arts inspired training.',

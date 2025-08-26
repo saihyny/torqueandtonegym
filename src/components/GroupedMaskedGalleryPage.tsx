@@ -1,6 +1,7 @@
 import React from "react";
 import MaskedDiv from "././ui/masked-div";
-
+import dumbles from "@/assets/videos/dumbles.mp4";
+import legpress from "@/assets/videos/legpress.mp4";
 // Define the type for the props
 interface GroupedMaskedGalleryPageProps {
   isExpanded: boolean;
@@ -11,16 +12,14 @@ const galleryItems = [
   {
     maskType: "type-1" as const,
     size: 0.45,
-    className: "rotate-180",
-    videoSrc:
-      "https://videos.pexels.com/video-files/18069803/18069803-uhd_1440_2560_24fps.mp4",
+    className: "rotate-360",
+    videoSrc: dumbles,
   },
   {
     maskType: "type-1" as const,
     size: 0.45,
     className: "my-4",
-    videoSrc:
-      "https://videos.pexels.com/video-files/7710243/7710243-uhd_2560_1440_30fps.mp4",
+    videoSrc: legpress,
   },
 
   {
