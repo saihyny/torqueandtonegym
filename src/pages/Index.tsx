@@ -118,10 +118,10 @@ const Index = () => {
             </button>
           </section>
           <section id="success">
-            {/* <SuccessStoriesSection /> */}
+            <SuccessStoriesSection />
           </section>
           <section id="reviews">
-          
+            <GymReviews/>
           </section>
           <section id="pricing">
             <PricingSection />
