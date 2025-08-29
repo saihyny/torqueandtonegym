@@ -108,7 +108,7 @@ const Index = () => {
             <TrainersSection />
           </section>
           <VideoSection />
-          <section id="gallery" className="text-center">
+          {/* <section id="gallery" className="text-center">
             <GroupedMaskedGalleryPage isExpanded={isGalleryExpanded} />
             <button
               onClick={handleGalleryToggle}
@@ -116,13 +116,13 @@ const Index = () => {
             >
               {isGalleryExpanded ? "Show Less" : "Show More"}
             </button>
-          </section>
-          <section id="success">
+          </section> */}
+          {/* <section id="success">
             <SuccessStoriesSection />
-          </section>
-          <section id="reviews">
+          </section> */}
+          {/* <section id="reviews">
             <GymReviews/>
-          </section>
+          </section> */}
           <section id="pricing">
             <PricingSection />
           </section>
