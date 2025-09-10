@@ -20,6 +20,7 @@ import {
   Mail,
 } from "lucide-react";
 import firstTriner from "@/assets/FirstTrainer.jpg";
+import secondTrainer from "@/assets/secondTrainer.jpg";
 
 // CSS Imports
 import "swiper/css";
@@ -277,6 +278,30 @@ const TrainersSection = () => {
             "Functional Fitness",
             "Nutritional Guidance",
             "Injury Prevention",
+          ],
+        },
+      },
+      {
+        id: 2,
+        name: "Aniket Chhetry",
+        title: "MMA Coach",
+        specialty: "MMA Training",
+        bio: "Train like a Warrior. Fight like a Champion. Be a Fighter.",
+        image: secondTrainer,
+        experience: "5+ Years",
+        rating: 4.8,
+        clients: "300+",
+        socialLinks: { instagram: "#", twitter: "#", linkedin: "#" },
+        contact: { phone: "+91 98765 43211", email: "aniket@elitegym.com" },
+        details: {
+          summary:
+            "Explosive striking, powerful punches & powerful kicks with a cage-ready mindset. Learn MMA Boxing • MMA Wrestling • Kickboxing • Self-Defense. Step inside the cage of discipline, power & transformation...",
+          strengths: [
+            "MMA Boxing",
+            "MMA Wrestling",
+            "Kickboxing",
+            "Self-Defense",
+            "Cage-Ready Mindset",
           ],
         },
       },
