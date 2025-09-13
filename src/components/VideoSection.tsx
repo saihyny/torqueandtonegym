@@ -5,15 +5,17 @@ import { useGSAP } from '@gsap/react';
 import { useInView } from 'react-intersection-observer';
 import { Button } from '@/components/ui/button';
 import { Play, Volume2 } from 'lucide-react';
-import gymInteriorVideo from '@/assets/gym-interior.mp4';
-import gymInteriorImage from '@/assets/gym-interior.jpg';
-
 // Register GSAP plugins. This should be done once in your application's entry file,
 // but is included here for completeness of the component.
 gsap.registerPlugin(ScrollTrigger);
 
-const VideoSection = () => {
-  const sectionRef = useRef<HTMLDivElement>(null);
+interface VideoSectionProps {
+  videoSrc: string;
+  posterSrc: string;
+}
+
+const VideoSection = ({ videoSrc, posterSrc }: VideoSectionProps) => {
+  const sectionRef = useRef<HTMLElement>(null);
   const { ref: inViewRef, inView } = useInView({ threshold: 0.3, triggerOnce: true });
   const videoRef = useRef<HTMLVideoElement>(null);
 
@@ -123,11 +125,11 @@ const VideoSection = () => {
           muted
           playsInline
           preload="auto"
-          poster={gymInteriorImage}
+          poster={posterSrc}
           aria-label="Gym interior video background"
           tabIndex={-1}
         >
-          <source src={gymInteriorVideo} type="video/mp4" />
+          <source src={videoSrc} type="video/mp4" />
         </video>
         <div className="absolute inset-0 bg-gradient-to-br from-background/80 via-background/60 to-background/80" />
         <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-primary/10 animate-pulse-slow" />
@@ -182,7 +184,7 @@ const VideoSection = () => {
           <div className="grid grid-cols-3 gap-8 pt-16 max-w-2xl mx-auto">
             <div className="text-center space-y-2 video-stats">
               <div className="text-4xl md:text-5xl font-oswald font-bold text-primary glow-primary">
-                2018
+                2025
               </div>
               <div className="text-sm text-white/70 uppercase tracking-wider">
                 Founded

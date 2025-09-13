@@ -7,6 +7,8 @@ import ProgramsSection from "@/components/ProgramsSection";
 import TrainersSection from "@/components/TrainersSection";
 import SuccessStoriesSection from "@/components/SuccessStoriesSection";
 import VideoSection from "@/components/VideoSection";
+import gymInteriorVideo from '@/assets/gym-interior.mp4';
+import gymInteriorImage from '@/assets/gym-interior.jpg';
 import PricingSection from "@/components/PricingSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
@@ -107,7 +109,7 @@ const Index = () => {
           <section id="trainers">
             <TrainersSection />
           </section>
-          <VideoSection />
+          <VideoSection videoSrc={gymInteriorVideo} posterSrc={gymInteriorImage} />
           <section id="gallery" className="text-center">
             <GroupedMaskedGalleryPage isExpanded={isGalleryExpanded} />
             <button
