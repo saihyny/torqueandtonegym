@@ -111,13 +111,7 @@ const Index = () => {
           </section>
           <VideoSection videoSrc={gymInteriorVideo} posterSrc={gymInteriorImage} />
           <section id="gallery" className="text-center">
-            <GroupedMaskedGalleryPage isExpanded={isGalleryExpanded} />
-            <button
-              onClick={handleGalleryToggle}
-              className="mt-8 px-8 py-3 bg-primary text-white font-semibold rounded-full shadow-lg hover:bg-primary-glow transition-all duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary-glow focus:ring-opacity-50"
-            >
-              {isGalleryExpanded ? "Show Less" : "Show More"}
-            </button>
+            <GroupedMaskedGalleryPage  />
           </section>
           {/* <section id="success">
             <SuccessStoriesSection />

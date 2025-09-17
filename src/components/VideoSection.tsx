@@ -20,10 +20,14 @@ const VideoSection = ({ videoSrc, posterSrc }: VideoSectionProps) => {
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
-    if (inView && videoRef.current) {
-      videoRef.current.play().catch(() => {
-        // Handle autoplay policy gracefully
-      });
+    if (videoRef.current) {
+      if (inView) {
+        videoRef.current.play().catch(() => {
+          // Handle autoplay policy gracefully
+        });
+      } else {
+        videoRef.current.pause();
+      }
     }
   }, [inView]);
 
@@ -124,10 +128,12 @@ const VideoSection = ({ videoSrc, posterSrc }: VideoSectionProps) => {
           loop
           muted
           playsInline
-          preload="auto"
+          preload="metadata"
           poster={posterSrc}
           aria-label="Gym interior video background"
           tabIndex={-1}
+          // loading="lazy" // Not supported on <video> in React/TS yet
+          style={{ willChange: 'transform' }}
         >
           <source src={videoSrc} type="video/mp4" />
         </video>
