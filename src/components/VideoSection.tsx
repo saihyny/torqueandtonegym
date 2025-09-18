@@ -121,24 +121,30 @@ const VideoSection = ({ videoSrc, posterSrc }: VideoSectionProps) => {
           alt="TORQUE & TONE FITNESS gym interior"
           className="w-full h-[120%] object-cover" // Height is > 100% to have room for parallax
         /> */}
-        <video
-          ref={videoRef}
-          className='w-full h-[120%] object-cover'
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="metadata"
-          poster={posterSrc}
-          aria-label="Gym interior video background"
-          tabIndex={-1}
-          // loading="lazy" // Not supported on <video> in React/TS yet
-          style={{ willChange: 'transform' }}
-        >
-          <source src={videoSrc} type="video/mp4" />
-        </video>
-        <div className="absolute inset-0 bg-gradient-to-br from-background/80 via-background/60 to-background/80" />
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-primary/10 animate-pulse-slow" />
+        {inView ? (
+          <video
+            ref={videoRef}
+            className='w-full h-[120%] object-cover'
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="metadata"
+            poster={posterSrc}
+            aria-label="Gym interior video background"
+            tabIndex={-1}
+            style={{ willChange: 'transform' }}
+          >
+            <source src={videoSrc} type="video/mp4" />
+          </video>
+        ) : (
+          <div
+            className="w-full h-[120%] object-cover bg-gray-800 flex items-center justify-center text-gray-400"
+            style={{ minHeight: '200px' }} // Placeholder height
+          >
+            Loading Video Background...
+          </div>
+        )}
       </div>
 
       {/* Floating Decorative Elements */}

@@ -16,6 +16,7 @@ import Navbar from "@/components/Navbar";
 import SchemaProvider from "@/components/schema/SchemaProvider";
 import { GroupedMaskedGalleryPage } from "@/components/GroupedMaskedGalleryPage";
 import GymReviews from "@/components/Testimonials";
+import VideoPlayer from "@/components/VideoPlayer";
 
 
 gsap.registerPlugin(ScrollTrigger);
@@ -109,7 +110,7 @@ const Index = () => {
           <section id="trainers">
             <TrainersSection />
           </section>
-          <VideoSection videoSrc={gymInteriorVideo} posterSrc={gymInteriorImage} />
+          <VideoSection videoSrc="/videos/IMG_5614.mp4" posterSrc={gymInteriorImage} />
           <section id="gallery" className="text-center">
             <GroupedMaskedGalleryPage  />
           </section>
@@ -125,6 +126,7 @@ const Index = () => {
           <section id="contact">
             <ContactSection />
           </section>
+          {/* <VideoPlayer src="output.mp4"/> */}
         </main>
         <Footer />
         <div className="fixed bottom-8 right-8 z-40">

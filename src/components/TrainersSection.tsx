@@ -21,6 +21,7 @@ import {
 } from "lucide-react";
 import firstTriner from "@/assets/FirstTrainer.jpg";
 import secondTrainer from "@/assets/secondTrainer.jpg";
+import thirdTrainer from "@/assets/thirdTrainer.jpg";
 
 // CSS Imports
 import "swiper/css";
@@ -302,6 +303,30 @@ const TrainersSection = () => {
             "Kickboxing",
             "Self-Defense",
             "Cage-Ready Mindset",
+          ],
+        },
+      },
+      {
+        id: 3,
+        name: "Ch.Sandeep Kumar",
+        title: "Mixed martial arts trainer",
+        specialty: "MMA & Calisthenics",
+        bio: "Expert in various martial arts and movement training, with a focus on holistic fitness.",
+        image: thirdTrainer,
+        experience: "10+ Years",
+        rating: 4.9,
+        clients: "400+",
+        socialLinks: { instagram: "#", twitter: "#", linkedin: "#" },
+        contact: { phone: "+91 98765 43212", email: "sandeep@elitegym.com" },
+        details: {
+          summary:
+            "Ch.Sandeep Kumar is a versatile trainer specializing in Mixed Martial Arts, including boxing, kickboxing, wrestling, Muay Thai, judo, and jujutsu. He also incorporates calisthenics and movement training into his regimen. Sandeep holds a WCK 2nd dan black belt in kickboxing and is an Iron Man 70.3 Goa finisher 2024. He is also proficient in training with various weapons such as knife, nanchaku, bostaff, and double stick.",
+          strengths: [
+            " Boxing & Kickboxing (WCK 2nd Dan Black Belt)",
+            "Wrestling & Muay Thai",
+            "Judo & Jujutsu",
+            "Calisthenics & Movement Training",
+            "Weapons Training (Knife, Nanchaku, Bostaff, Double Stick) & Iron Man 70.3 Finisher",
           ],
         },
       },
