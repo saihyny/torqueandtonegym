@@ -63,7 +63,7 @@ const LocalBusinessSchema = ({
       "telephone": telephone,
       "email": email,
       "image": image,
-      "logo": `${url}/hero-bodybuilder.jpg`,
+      "logo": `${url}/logo_transparent.png`,
       "address": {
         "@type": "PostalAddress",
         "streetAddress": address.streetAddress,

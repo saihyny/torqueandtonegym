@@ -22,6 +22,7 @@ import {
 import firstTriner from "@/assets/FirstTrainer.jpg";
 import secondTrainer from "@/assets/secondTrainer.jpg";
 import thirdTrainer from "@/assets/thirdTrainer.jpg";
+import fourthTrainer from "@/assets/FourthTrainer.jpg";
 
 // CSS Imports
 import "swiper/css";
@@ -330,6 +331,31 @@ const TrainersSection = () => {
           ],
         },
       },
+      {
+        id: 4,
+        name: "Vamsi Krishna",
+        title: "Strength & Transformation Specialist",
+        specialty: "Powerlifting & Body Transformation",
+        bio: "Certified Gym Trainer with competitive powerlifting and bodybuilding experience, combining strength science, functional training, and nutrition principles.",
+        image: fourthTrainer,
+        experience: "5+ Years",
+        rating: 4.9,
+        clients: "200+",
+        socialLinks: { instagram: "#", twitter: "#", linkedin: "#" },
+        contact: { phone: "+91 98765 43213", email: "trainer@elitegym.com" },
+        details: {
+          summary:
+            "A Certified Gym Trainer with competitive powerlifting and bodybuilding experience, combining strength science, functional training, and nutrition principles to deliver measurable fitness results. Expert in posing and posture corrections, stretching and mobility, with a psychology-focused approach to client coaching.",
+          strengths: [
+            "Strength & Conditioning",
+            "Body Transformation & Powerlifting",
+            "Posing & Posture Corrections",
+            "Stretching & Mobility",
+            "Nutrition Guidance & Injury Prevention",
+            "Psychology-Focused Client Coaching",
+          ],
+        },
+      },
     ],
     []
   );
@@ -439,11 +465,10 @@ const TrainersSection = () => {
                       key={index}
                       onClick={() => goToTrainer(index)}
                       disabled={isTransitioning}
-                      className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                        index === activeIndex
-                          ? "bg-primary scale-125 shadow-lg shadow-primary/50"
-                          : "bg-white/30 hover:bg-white/50"
-                      }`}
+                      className={`w-3 h-3 rounded-full transition-all duration-300 ${index === activeIndex
+                        ? "bg-primary scale-125 shadow-lg shadow-primary/50"
+                        : "bg-white/30 hover:bg-white/50"
+                        }`}
                       aria-label={`Go to ${trainers[index].name}`}
                     />
                   ))}
@@ -465,11 +490,10 @@ const TrainersSection = () => {
                     key={trainer.id}
                     onClick={() => goToTrainer(index)}
                     disabled={isTransitioning}
-                    className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                      index === activeIndex
-                        ? "bg-primary text-white shadow-lg shadow-primary/30 scale-105"
-                        : "bg-white/10 text-gray-300 hover:bg-white/20 hover:text-white active:scale-95"
-                    } disabled:opacity-50`}
+                    className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${index === activeIndex
+                      ? "bg-primary text-white shadow-lg shadow-primary/30 scale-105"
+                      : "bg-white/10 text-gray-300 hover:bg-white/20 hover:text-white active:scale-95"
+                      } disabled:opacity-50`}
                   >
                     {trainer.name.split(" ")[0]}
                   </button>
@@ -481,9 +505,8 @@ const TrainersSection = () => {
           {/* Right Column: Trainer Details */}
           <div className="w-full max-w-xl mx-auto text-center lg:text-left">
             <div
-              className={`transition-opacity duration-400 ${
-                isTransitioning ? "opacity-0" : "opacity-100"
-              }`}
+              className={`transition-opacity duration-400 ${isTransitioning ? "opacity-0" : "opacity-100"
+                }`}
             >
               <div className="mb-8">
                 <h3 className="text-4xl md:text-5xl font-oswald font-bold text-white glow-primary text-glow">

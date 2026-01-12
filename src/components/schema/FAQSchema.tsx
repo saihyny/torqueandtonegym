@@ -148,7 +148,7 @@ const FAQSchema = ({ faqs }: FAQSchemaProps) => {
         "url": "https://torqueandtonefitness.com",
         "logo": {
           "@type": "ImageObject",
-          "url": "https://torqueandtonefitness.com/hero-bodybuilder.jpg"
+          "url": "https://torqueandtonefitness.com/logo_transparent.png"
         }
       },
       "datePublished": "2025-08-20",
