@@ -23,6 +23,7 @@ import firstTriner from "@/assets/FirstTrainer.jpg";
 import secondTrainer from "@/assets/secondTrainer.jpg";
 import thirdTrainer from "@/assets/thirdTrainer.jpg";
 import fourthTrainer from "@/assets/FourthTrainer.jpg";
+import fifthTrainer from "@/assets/FifthTrainer.jpg";
 
 // CSS Imports
 import "swiper/css";
@@ -356,6 +357,31 @@ const TrainersSection = () => {
           ],
         },
       },
+      {
+        id: 5,
+        name: "CH. Bhargav",
+        title: "Elite Strength & Performance Coach",
+        specialty: "Body Recomposition & Powerlifting",
+        bio: "Expert in Elite Strength & Conditioning, Body Recomposition, Powerlifting, and Customized Training Systems.",
+        image: fifthTrainer,
+        experience: "Expert",
+        rating: 5.0,
+        clients: "Elite",
+        socialLinks: { instagram: "#", twitter: "#", linkedin: "#" },
+        contact: { phone: "+91 98765 43214", email: "bhargav@elitegym.com" },
+        details: {
+          summary:
+            "Specializing in Elite Strength & Conditioning, Body Recomposition, Powerlifting, Customized Training Systems, Postural Alignment, Mobility Optimization, and Psychological Performance Coaching.",
+          strengths: [
+            "Hypertrophy & Fat Loss",
+            "Athletic Conditioning",
+            "Precision Nutrition",
+            "Injury-Resistant Training",
+            "High-Level Client Transformation",
+            "Postural Alignment & Mobility",
+          ],
+        },
+      },
     ],
     []
   );
@@ -495,7 +521,7 @@ const TrainersSection = () => {
                       : "bg-white/10 text-gray-300 hover:bg-white/20 hover:text-white active:scale-95"
                       } disabled:opacity-50`}
                   >
-                    {trainer.name.split(" ")[0]}
+                    {trainer.name}
                   </button>
                 ))}
               </div>
