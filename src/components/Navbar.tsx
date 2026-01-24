@@ -34,7 +34,7 @@ const Navbar = () => {
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
-  
+
   // Function to handle link clicks in the mobile menu
   const handleMobileLinkClick = () => {
     setIsMenuOpen(false);
@@ -44,18 +44,17 @@ const Navbar = () => {
     { href: "#home", title: "Home" },
     { href: "#programs", title: "Programs" },
     { href: "#trainers", title: "Trainers" },
-    { href: "#success", title: "Success Stories" },
+    // { href: "#success", title: "Success Stories" },
     { href: "#pricing", title: "Pricing" },
     { href: "#gallery", title: "Gallery" },
-    { href: "#reviews", title: "Reviews" },
+    // { href: "#reviews", title: "Reviews" },
   ];
 
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled || isMenuOpen ? "bg-background/80 backdrop-blur-md border-b border-border/30" : ""
-        }`}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled || isMenuOpen ? "bg-background/80 backdrop-blur-md border-b border-border/30" : ""
+          }`}
       >
         <div className="container mx-auto px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
@@ -137,21 +136,19 @@ const Navbar = () => {
       {/* Mobile Menu Overlay & Panel */}
       <div
         id="mobile-menu"
-        className={`fixed inset-0 z-40 lg:hidden transition-all duration-300 ease-in-out ${
-          isMenuOpen ? "opacity-100 visible" : "opacity-0 invisible"
-        }`}
+        className={`fixed inset-0 z-40 lg:hidden transition-all duration-300 ease-in-out ${isMenuOpen ? "opacity-100 visible" : "opacity-0 invisible"
+          }`}
       >
         {/* Overlay */}
-        <div 
+        <div
           className="absolute inset-0 bg-black/50"
           onClick={toggleMenu}
         ></div>
-        
+
         {/* Menu Panel */}
         <div
-          className={`absolute top-0 right-0 h-full w-4/5 max-w-sm bg-background/30 backdrop-blur-lg p-8 shadow-xl transition-transform duration-300 ease-in-out ${
-            isMenuOpen ? "translate-x-0" : "translate-x-full"
-          }`}
+          className={`absolute top-0 right-0 h-full w-4/5 max-w-sm bg-background/30 backdrop-blur-lg p-8 shadow-xl transition-transform duration-300 ease-in-out ${isMenuOpen ? "translate-x-0" : "translate-x-full"
+            }`}
         >
           <div className="flex flex-col h-full">
             <div className="flex-grow flex flex-col justify-center space-y-6">

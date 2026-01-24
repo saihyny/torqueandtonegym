@@ -18,19 +18,19 @@ const Footer = () => {
   ];
 
   const socialLinks = [
-    { icon: Instagram, href: '#', name: 'Instagram' },
-    { icon: Facebook, href: '#', name: 'Facebook' },
-    { icon: Twitter, href: '#', name: 'Twitter' },
-    { icon: Youtube, href: '#', name: 'YouTube' }
+    { icon: Instagram, href: 'https://www.instagram.com/torqueandtonefitness/', name: 'Instagram' },
+    { icon: Facebook, href: 'https://www.facebook.com/share/1CnLiNKqmg/', name: 'Facebook' },
+    // { icon: Twitter, href: '#', name: 'Twitter' },
+    // { icon: Youtube, href: '#', name: 'YouTube' }
   ];
 
   return (
     <footer className="bg-gradient-to-br from-background to-card border-t border-border/30">
       <div className="container mx-auto px-6 lg:px-8 py-16">
-        
+
         {/* Main Footer Content */}
         <div className="grid lg:grid-cols-4 gap-12">
-          
+
           {/* Brand Section */}
           <div className="lg:col-span-1 space-y-6">
             <div className="space-y-4">
@@ -38,7 +38,7 @@ const Footer = () => {
                 TORQUE & TONE FITNESS
               </h3>
               <p className="text-muted-foreground leading-relaxed">
-                Transform your body and mind with our premium fitness programs. 
+                Transform your body and mind with our premium fitness programs.
                 Join thousands who have already started their journey to greatness.
               </p>
             </div>
@@ -47,9 +47,14 @@ const Footer = () => {
             <div className="space-y-3">
               <div className="flex items-center gap-3 text-sm">
                 <MapPin className="w-4 h-4 text-primary flex-shrink-0" />
-                <span className="text-muted-foreground">
-                7-61 sree venkata sai colony beside st'anthonys high school, KOMPALLY
-                </span>
+                <a
+                  href="https://maps.app.goo.gl/vftApsTX2aDCSG8b7"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-muted-foreground hover:text-primary transition-colors text-left"
+                >
+                  7-61 sree venkata sai colony beside st'anthonys high school, KOMPALLY
+                </a>
               </div>
               <div className="flex items-center gap-3 text-sm">
                 <Phone className="w-4 h-4 text-primary flex-shrink-0" />
@@ -93,7 +98,7 @@ const Footer = () => {
             <ul className="space-y-3">
               {quickLinks.map((link, index) => (
                 <li key={link.name}>
-                  <a 
+                  <a
                     href={link.href}
                     className="text-muted-foreground hover:text-primary transition-colors duration-300 text-sm hover:underline"
                   >
@@ -112,7 +117,7 @@ const Footer = () => {
             <ul className="space-y-3">
               {programs.map((program, index) => (
                 <li key={program.name}>
-                  <a 
+                  <a
                     href={program.href}
                     className="text-muted-foreground hover:text-primary transition-colors duration-300 text-sm hover:underline"
                   >
@@ -163,54 +168,54 @@ const Footer = () => {
         </div>
 
         {/* Bottom Section */}
-        <div className="border-t border-border/30 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">          
-            {/* Copyright */}
-            <div className="text-sm text-muted-foreground">
-              © 2025 TORQUE & TONE FITNESS. All rights reserved.
-            </div>
-
-            {/* Legal Links */}
-            <div className="flex gap-6 text-sm">
-              <a 
-                href="#" 
-                className="text-muted-foreground hover:text-primary transition-colors duration-300"
-              >
-                Privacy Policy
-              </a>
-              <a 
-                href="#" 
-                className="text-muted-foreground hover:text-primary transition-colors duration-300"
-              >
-                Terms of Service
-              </a>
-              <a 
-                href="#" 
-                className="text-muted-foreground hover:text-primary transition-colors duration-300"
-              >
-                Cookie Policy
-              </a>
-            </div>
-
-            {/* Certification Badges */}
-            <div className="flex items-center gap-4">
-              <div className="text-xs text-muted-foreground">
-                Certified by:
-              </div>
-              <div className="flex gap-2">
-                <span className="px-2 py-1 bg-muted/20 rounded text-xs text-primary font-semibold">
-                  NASM
-                </span>
-                <span className="px-2 py-1 bg-muted/20 rounded text-xs text-primary font-semibold">
-                  ACE
-                </span>
-              </div>
-            </div>
-            {/* Developed by */}            
-          
+        <div className="border-t border-border/30 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+          {/* Copyright */}
+          <div className="text-sm text-muted-foreground">
+            © 2025 TORQUE & TONE FITNESS. All rights reserved.
           </div>
-          <div className="text-sm text-muted-foreground text-center m-6 hover:underline cursor-pointer " onClick={() => window.open('https://bytefractal.netlify.app/', '_blank')}>devloped by Byte Fractal</div>
+
+          {/* Legal Links */}
+          <div className="flex gap-6 text-sm">
+            <a
+              href="#"
+              className="text-muted-foreground hover:text-primary transition-colors duration-300"
+            >
+              Privacy Policy
+            </a>
+            <a
+              href="#"
+              className="text-muted-foreground hover:text-primary transition-colors duration-300"
+            >
+              Terms of Service
+            </a>
+            <a
+              href="#"
+              className="text-muted-foreground hover:text-primary transition-colors duration-300"
+            >
+              Cookie Policy
+            </a>
+          </div>
+
+          {/* Certification Badges */}
+          <div className="flex items-center gap-4">
+            <div className="text-xs text-muted-foreground">
+              Certified by:
+            </div>
+            <div className="flex gap-2">
+              <span className="px-2 py-1 bg-muted/20 rounded text-xs text-primary font-semibold">
+                NASM
+              </span>
+              <span className="px-2 py-1 bg-muted/20 rounded text-xs text-primary font-semibold">
+                ACE
+              </span>
+            </div>
+          </div>
+          {/* Developed by */}
+
         </div>
-           
+        <div className="text-sm text-muted-foreground text-center m-6 hover:underline cursor-pointer " onClick={() => window.open('https://bytefractal.netlify.app/', '_blank')}>devloped by Byte Fractal</div>
+      </div>
+
     </footer>
   );
 };

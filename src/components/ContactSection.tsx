@@ -15,7 +15,7 @@ const ContactSection = () => {
       icon: '📍',
       title: 'Visit Us',
       details: '7-61 sree venkata sai colony beside st’anthonys high school, KOMPALLY',
-      link: 'https://www.google.com/maps/place/BARBELL+FITNESS+CLUB+(KOMPALLY)/@17.5467234,78.4873498,17z/data=!3m1!4b1!4m6!3m5!1s0x3bcb8500108407cf:0x7fa695ff9608'
+      link: 'https://maps.app.goo.gl/vftApsTX2aDCSG8b7'
     },
     {
       icon: '📞',
@@ -38,9 +38,9 @@ const ContactSection = () => {
   ];
 
   const socialLinks = [
-    { icon: '📷', href: '#', name: 'Instagram' },
-    { icon: '👥', href: '#', name: 'Facebook' },
-    { icon: '🐦', href: '#', name: 'Twitter' }
+    { icon: '📷', href: 'https://www.instagram.com/torqueandtonefitness/', name: 'Instagram' },
+    { icon: '👥', href: 'https://www.facebook.com/share/1CnLiNKqmg/', name: 'Facebook' },
+    // { icon: '🐦', href: '#', name: 'Twitter' }
   ];
 
   useEffect(() => {
@@ -76,8 +76,8 @@ const ContactSection = () => {
   };
 
   return (
-    <section 
-      ref={sectionRef} 
+    <section
+      ref={sectionRef}
       className="min-h-screen bg-black relative overflow-hidden py-20"
     >
       {/* Background Elements */}
@@ -88,20 +88,20 @@ const ContactSection = () => {
 
       <div className="container mx-auto px-6 lg:px-8 relative z-10 max-w-6xl">
         <div className="space-y-16">
-          
+
           {/* Section Header */}
           <div className="text-center max-w-3xl mx-auto space-y-6">
             <h2 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-red-500 to-orange-500 bg-clip-text text-transparent">
               JOIN OUR COMMUNITY
             </h2>
             <p className="text-xl text-gray-300 leading-relaxed">
-              Ready to transform your life? Get in touch with us today and start your journey 
+              Ready to transform your life? Get in touch with us today and start your journey
               to becoming the strongest version of yourself.
             </p>
           </div>
 
           <div className="grid lg:grid-cols-2 gap-16">
-            
+
             {/* Contact Form */}
             <div className={`transition-all duration-1000 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
               <div className="bg-gray-900/80 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-8 shadow-2xl">
@@ -179,7 +179,7 @@ const ContactSection = () => {
                       />
                     </div>
 
-                    <button 
+                    <button
                       onClick={handleSubmit}
                       className="w-full px-8 py-4 bg-gradient-to-r from-red-600 to-orange-600 text-white font-bold rounded-lg hover:from-red-700 hover:to-orange-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
                     >
@@ -192,25 +192,25 @@ const ContactSection = () => {
 
             {/* Contact Info & Map */}
             <div className="space-y-8">
-              
+
               {/* Contact Info Cards */}
               <div className="grid sm:grid-cols-2 gap-6 hover:cursor-pointer">
                 {contactInfo.map((info, index) => (
-                  <div 
-                    key={info.title} 
+                  <div
+                    key={info.title}
                     className={`transition-all duration-1000 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
                     style={{ transitionDelay: `${index * 150}ms` }}
                     onClick={() => {
-                       if(info.title === 'Email Us'){
-                           window.open(`mailto:${info.link}`);
-                       }  else if(info.title === 'Call Us'){
-                           window.open(`tel:${info.link}`);
-                       } else if(info.title === 'Visit Us'){
-                           window.open(info.link);
-                       }  else if(info.title === 'Hours'){
-                           // Do nothing
-                       }
-                      }}
+                      if (info.title === 'Email Us') {
+                        window.open(`mailto:${info.link}`);
+                      } else if (info.title === 'Call Us') {
+                        window.open(`tel:${info.link}`);
+                      } else if (info.title === 'Visit Us') {
+                        window.open(info.link);
+                      } else if (info.title === 'Hours') {
+                        // Do nothing
+                      }
+                    }}
                   >
                     <div className="bg-gray-900/80 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-6 text-center space-y-4 h-full shadow-lg hover:shadow-xl transition-all duration-300">
                       <div className="w-12 h-12 bg-red-500/20 rounded-lg flex items-center justify-center mx-auto text-2xl">
@@ -242,7 +242,7 @@ const ContactSection = () => {
                         <p className="text-sm text-gray-400">
                           Interactive map coming soon
                         </p>
-                        <button onClick={() => window.open('https://www.google.com/maps/place/BARBELL+FITNESS+CLUB+(KOMPALLY)/@17.5467234,78.4873498,17z/data=!3m1!4b1!4m6!3m5!1s0x3bcb8500108407cf:0x7fa695ff96089354!8m2!3d17.5467183!4d78.4899247!16s%2Fg%2F11wfr6hkkr?entry=ttu&g_ep=EgoyMDI1MDgxMy4wIKXMDSoASAFQAw%3D%3D')} className="px-6 py-2 border border-red-500/30 text-red-400 rounded-lg hover:bg-red-500/10 transition-all duration-300">
+                        <button onClick={() => window.open('https://maps.app.goo.gl/vftApsTX2aDCSG8b7', '_blank')} className="px-6 py-2 border border-red-500/30 text-red-400 rounded-lg hover:bg-red-500/10 transition-all duration-300">
                           Get Directions
                         </button>
                       </div>

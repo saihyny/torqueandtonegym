@@ -20,8 +20,8 @@ import {
   Mail,
 } from "lucide-react";
 import firstTriner from "@/assets/FirstTrainer.jpg";
-import secondTrainer from "@/assets/secondTrainer.jpg";
-import thirdTrainer from "@/assets/thirdTrainer.jpg";
+// import secondTrainer from "@/assets/secondTrainer.jpg";
+// import thirdTrainer from "@/assets/thirdTrainer.jpg";
 import fourthTrainer from "@/assets/FourthTrainer.jpg";
 import fifthTrainer from "@/assets/FifthTrainer.jpg";
 
@@ -85,7 +85,7 @@ const UnifiedTrainerCarousel: React.FC<CarouselProps> = ({
       <img
         src={trainer.image}
         alt={trainer.name}
-        className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+        className="absolute inset-0 w-full h-full object-cover object-[center_top] transition-transform duration-700 group-hover:scale-105"
         loading="lazy"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/50 to-transparent md:from-black/90" />
@@ -121,14 +121,18 @@ const UnifiedTrainerCarousel: React.FC<CarouselProps> = ({
               { href: trainer.socialLinks.twitter, icon: Twitter },
               { href: trainer.socialLinks.linkedin, icon: Linkedin },
             ].map(({ href, icon: Icon }, idx) => (
-              <a
-                key={idx}
-                href={href}
-                className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center hover:bg-primary hover:scale-110 transition-all duration-300 backdrop-blur-sm shadow-lg"
-                aria-label={`${trainer.name} social link ${idx + 1}`}
-              >
-                <Icon className="w-4 h-4" />
-              </a>
+              href ? (
+                <a
+                  key={idx}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center hover:bg-primary hover:scale-110 transition-all duration-300 backdrop-blur-sm shadow-lg"
+                  aria-label={`${trainer.name} social link ${idx + 1}`}
+                >
+                  <Icon className="w-4 h-4" />
+                </a>
+              ) : null
             ))}
           </div>
           <div className="md:hidden flex items-center gap-2">
@@ -270,7 +274,7 @@ const TrainersSection = () => {
         experience: "8+ Years",
         rating: 4.9,
         clients: "500+",
-        socialLinks: { instagram: "#", twitter: "#", linkedin: "#" },
+        socialLinks: { instagram: "https://www.instagram.com/torqueandtonefitness/", twitter: "", linkedin: "" },
         contact: { phone: "+91 98765 43210", email: "uday@elitegym.com" },
         details: {
           summary:
@@ -284,54 +288,8 @@ const TrainersSection = () => {
           ],
         },
       },
-      {
-        id: 2,
-        name: "Aniket Chhetry",
-        title: "MMA Coach",
-        specialty: "MMA Training",
-        bio: "Train like a Warrior. Fight like a Champion. Be a Fighter.",
-        image: secondTrainer,
-        experience: "5+ Years",
-        rating: 4.8,
-        clients: "300+",
-        socialLinks: { instagram: "#", twitter: "#", linkedin: "#" },
-        contact: { phone: "+91 98765 43211", email: "aniket@elitegym.com" },
-        details: {
-          summary:
-            "Explosive striking, powerful punches & powerful kicks with a cage-ready mindset. Learn MMA Boxing • MMA Wrestling • Kickboxing • Self-Defense. Step inside the cage of discipline, power & transformation...",
-          strengths: [
-            "MMA Boxing",
-            "MMA Wrestling",
-            "Kickboxing",
-            "Self-Defense",
-            "Cage-Ready Mindset",
-          ],
-        },
-      },
-      {
-        id: 3,
-        name: "Ch.Sandeep Kumar",
-        title: "Mixed martial arts trainer",
-        specialty: "MMA & Calisthenics",
-        bio: "Expert in various martial arts and movement training, with a focus on holistic fitness.",
-        image: thirdTrainer,
-        experience: "10+ Years",
-        rating: 4.9,
-        clients: "400+",
-        socialLinks: { instagram: "#", twitter: "#", linkedin: "#" },
-        contact: { phone: "+91 98765 43212", email: "sandeep@elitegym.com" },
-        details: {
-          summary:
-            "Ch.Sandeep Kumar is a versatile trainer specializing in Mixed Martial Arts, including boxing, kickboxing, wrestling, Muay Thai, judo, and jujutsu. He also incorporates calisthenics and movement training into his regimen. Sandeep holds a WCK 2nd dan black belt in kickboxing and is an Iron Man 70.3 Goa finisher 2024. He is also proficient in training with various weapons such as knife, nanchaku, bostaff, and double stick.",
-          strengths: [
-            " Boxing & Kickboxing (WCK 2nd Dan Black Belt)",
-            "Wrestling & Muay Thai",
-            "Judo & Jujutsu",
-            "Calisthenics & Movement Training",
-            "Weapons Training (Knife, Nanchaku, Bostaff, Double Stick) & Iron Man 70.3 Finisher",
-          ],
-        },
-      },
+
+
       {
         id: 4,
         name: "Vamsi Krishna",
@@ -342,7 +300,7 @@ const TrainersSection = () => {
         experience: "5+ Years",
         rating: 4.9,
         clients: "200+",
-        socialLinks: { instagram: "#", twitter: "#", linkedin: "#" },
+        socialLinks: { instagram: "https://www.instagram.com/torqueandtonefitness/", twitter: "", linkedin: "" },
         contact: { phone: "+91 98765 43213", email: "trainer@elitegym.com" },
         details: {
           summary:
